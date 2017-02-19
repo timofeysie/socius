@@ -1,4 +1,4 @@
-# The Quad Angular Library
+# The Socius Shared Angular Library
 
 A shared component library which can be used in Angular 2 projects. 
 The library is built with gulp which creates a lib directory that can be linked to and used by another project.
@@ -33,9 +33,9 @@ This will create a globally-installed symbolic link from prefix/package-name to 
 
 Next, in the node_modules of the project where you want to use this lib: 
 ```
-$ npm link quad-angular
+$ npm link socius
 ```
-A symlink will be created from the local node_modules to the quad lib.
+A symlink will be created from the local node_modules to the socius lib.
 
 
 ## Using components
@@ -48,7 +48,7 @@ These two types require different methods for usage.
 ### A data model class
 To use a class from the library, for example the Result object, in the class where you would like to use it, you only have to import the part that you want:
 ```
-import { Result } from 'quad-angular';
+import { Result } from 'socius';
 ```
 You can then create a member variable like this:
 ```
@@ -58,11 +58,11 @@ result: Result;
 ### A UI component
 To use a UI component, for example, the notification object, we need to add it to the app.module.ts file.
 ```
-import * as quad from 'quad-angular/lib/components/notification.component';
+import * as socius from 'socius/lib/components/notification.component';
 
 @NgModule({
   declarations: [
-    quad.NotificationComponent
+    socius.NotificationComponent
 ```
 
 The notification component has a title and content.  
@@ -92,7 +92,7 @@ If your interested in taking this further checkout out [Component Inheritance](h
 ## Development
 
 To add a class to the library, first, create the class somewhere within the src directory.
-Import it into the quad.module.ts file:
+Import it into the socius.module.ts file:
 ```
 import { Result } from './models/result';
 ```

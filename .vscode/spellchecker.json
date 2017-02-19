@@ -1,0 +1,21 @@
+{
+    "language": "en_US",
+    "ignoreWordsList": [
+        "flexbox",
+        "entryComponents",
+        "serhiisol",
+        "getPatientsFromDbOrHttp",
+        "compareWithHttp",
+        "Socius",
+        "symlink",
+        "socius"
+    ],
+    "documentTypes": [
+        "markdown",
+        "latex",
+        "plaintext"
+    ],
+    "ignoreRegExp": [],
+    "ignoreFileExtensions": [],
+    "checkInterval": 5000
+}
