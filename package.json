@@ -1,7 +1,7 @@
 {
-  "name": "quad-angular",
+  "name": "socius",
   "version": "0.1.1",
-  "description": "Quad Library project",
+  "description": "Socius is a shared library project",
   "main": "index.js",
   "types": "index.d.ts",
   "scripts": {

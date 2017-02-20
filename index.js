@@ -1,1 +1,1 @@
-exports.QuadAngular = require('./lib/quad.module').QuadAngular;
+exports.Socius = require('./lib/socius.module').Socius;
