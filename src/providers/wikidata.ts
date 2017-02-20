@@ -24,7 +24,7 @@ export class Wikidata {
   c = "&callback=?" // wd|wp
   f = "&format=json" // wd|wp
 
-  constructor(@Inject(Http) public http: Http) {
+  constructor(private http: Http) {
     //1b. Compose your url:
     let urlwd = this.wd+
                 this.aw+
