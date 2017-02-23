@@ -40,19 +40,20 @@ A symlink will be created from the local node_modules to the socius lib.
 
 ## Using components
 
-There are two types of components in the library.
+There are three types of components in the library.
 The first type is a simple class, for example, the data model.
 The second type is a UI component.  
-These two types require different methods for usage.
+The third type is a service, or provider as they are called these days.
+These types require different methods for usage.
 
 ### A data model class
-To use a class from the library, for example the Result object, in the class where you would like to use it, you only have to import the part that you want:
+To use a class from the library, for example the Pattern object, in the class where you would like to use it, you only have to import the part that you want:
 ```
-import { Result } from 'socius';
+import { Pattern } from 'socius';
 ```
 You can then create a member variable like this:
 ```
-result: Result;
+pattern: Pattern;
 ```
 
 ### A UI component
@@ -86,7 +87,47 @@ And in the template:
 <notification [title]="title" [content]="content"></notification>
 ```
 
-If your interested in taking this further checkout out [Component Inheritance](https://scotch.io/tutorials/component-inheritance-in-angular-2) in Angular 2.
+### Using a service
+
+Using a provider service requires a slightly different method.
+Import the service in the app.module.ts file with the path to the file.
+This example shows how to use the Wikidata service.
+You must also put it in the providers array like this:
+```
+import { Wikidata } from 'socius/lib/providers/wikidata';
+  ...
+  providers: [ Wikidata ],
+```
+
+In the class where you want to use the service you must also use the same import as shown above.
+In the constructor,  include the reference and use it like this:
+```
+  constructor(wikidata: Wikidata) {
+    let result = wikidata.getData('quadcopter');
+  }
+```
+
+### Extending a component
+
+Another option is extending a component using the method this article on [Component Inheritance](https://scotch.io/tutorials/component-inheritance-in-angular-2).
+An important thing to note about this method is that Component inheritance does not cover templates and styles. 
+Shared DOM or behaviours must be re-created.
+
+The example shows this code example:
+```
+export class MyPaginationComponent extends SimplePaginationComponent
+```
+
+The original template does this:
+```
+<button (click)="nextPage()" [disabled]="!hasNext()">{{ nextText }}</button>
+```
+
+The extended template, which now uses a link does this:
+```
+<a (click)="nextPage()" [class.disabled]="!hasNext()" href="javascript:void(0)" >{{ nextText }}</a>
+```
+
 
 
 ## Development
