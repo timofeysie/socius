@@ -1,7 +1,23 @@
 # The Socius Shared Angular Library
 
-A shared component library which can be used in Angular 2 projects. 
+A shared component library which can be used in Angular projects. 
+
 The library is built with gulp which creates a lib directory that can be linked to and used by another project.
+
+
+## Table of contents
+
+1. [Development Setup](#Development-Setup)
+1. [Current work](#Current-Work)
+1. [Set up a project to use this library](#Set-up-a-project-to-use-this-library)
+1. [Using components](#Using-components)
+1. [A data model class](#A-data-model-class)
+1. [A UI component](#A-UI-component)
+1. [Using a service](#Using-a-service)
+1. [Extending a component](#Extending-a-component)
+1. [Development](#Development)
+
+#
 
 ## Development Setup
 
@@ -17,8 +33,14 @@ $ gulp build
 
 This will build the project into the lib directory.
 
+## Current work
 
-## Set up a project ot use this library
+This project will finally get used for what it was meant for.  It will used in [Loranthifolia](https://github.com/timofeysie/loranthifolia), [Teritifolia](https://github.com/timofeysie/teretifolia) and [Conchifolia](https://github.com/timofeysie/conchifolia) projects to hold common front end code.  The back-end code uses the [Curator](https://github.com/timofeysie/curator) project as a shared lib for the back end code. 
+
+First we will move some constants and data models, as well as some vanilla JavaScript functions.  It would be nice to use Angular 6's [Elements](https://angular.io/guide/elements) for new UI components.
+
+
+## Set up a project to use this library
 
 Without using the npm ecosystem, we can link the lib to a project in the following way.
 
