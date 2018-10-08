@@ -1,0 +1,1 @@
+{"version":3,"names":[],"mappings":"","sources":["providers/convenience.d.ts"],"sourcesContent":["export declare class Convenience {\n    constructor();\n    removeFootnotes(description: string): string;\n}\n"],"file":"convenience.d.ts"}
