@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
-
 import { NotificationComponent }   from './components/notification.component';
 import { Pattern } from './models/pattern';
 import { AntiPattern } from './models/anti-pattern';
 import { Wikidata } from './providers/wikidata';
+import { Convenience } from './providers/convenience';
 
 @NgModule({
     imports: [
@@ -13,13 +13,15 @@ import { Wikidata } from './providers/wikidata';
             NotificationComponent,
             Pattern,
             AntiPattern,
-            Wikidata
+            Wikidata,
+            Convenience
     ],
     declarations: [
             NotificationComponent,
             Pattern,
             AntiPattern,
-            Wikidata
+            Wikidata,
+            Convenience
         ],
     providers: [    ],
 })

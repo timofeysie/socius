@@ -1,6 +1,6 @@
 {
   "name": "socius",
-  "version": "0.1.1",
+  "version": "0.2.1",
   "description": "Socius is a shared library project",
   "main": "index.js",
   "types": "index.d.ts",
@@ -15,9 +15,9 @@
     "Angular",
     "Library"
   ],
-  "author": "l.bauche@hqlabs.com",
+  "author": "timofeysie",
   "license": "MIT",
-  "homepage": "",
+  "homepage": "https://github.com/timofeysie",
   "dependencies": {},
   "devDependencies": {
     "@angular/common": "~2.0.2",
