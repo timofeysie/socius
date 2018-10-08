@@ -1,6 +1,6 @@
 {
   "name": "consort",
-  "version": "0.2.4",
+  "version": "1.0.0",
   "description": "Consort is a shared library project",
   "main": "index.js",
   "types": "index.d.ts",
