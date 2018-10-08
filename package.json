@@ -1,7 +1,7 @@
 {
-  "name": "socius",
+  "name": "consort",
   "version": "0.2.1",
-  "description": "Socius is a shared library project",
+  "description": "Consort is a shared library project",
   "main": "index.js",
   "types": "index.d.ts",
   "scripts": {
