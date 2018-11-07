@@ -1,7 +1,8 @@
 import { Config } from '@stencil/core';
+const { sass } = require('@stencil/sass');
 
 export const config: Config = {
-  namespace: 'mycomponent',
+  namespace: 'curchod-ui',
   outputTargets:[
     {
       type: 'dist'
@@ -10,5 +11,8 @@ export const config: Config = {
       type: 'www',
       serviceWorker: null
     }
+  ],
+    plugins: [
+      sass()
   ]
 };
