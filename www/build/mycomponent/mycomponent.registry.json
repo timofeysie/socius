@@ -1,0 +1,15 @@
+{
+  "namespace": "mycomponent",
+  "fsNamespace": "mycomponent",
+  "loader": "../mycomponent.js",
+  "corePolyfilled": "es5-build-disabled.js",
+  "core": "mycomponent.core.js",
+  "components": {
+    "my-component": {
+      "bundleIds": {
+        "$": "my-component"
+      },
+      "encapsulation": "shadow"
+    }
+  }
+}

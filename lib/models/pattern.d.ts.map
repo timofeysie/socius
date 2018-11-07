@@ -1,1 +1,0 @@
-{"version":3,"names":[],"mappings":"","sources":["models/pattern.d.ts"],"sourcesContent":["export declare class Pattern {\n    constructor(name: string, definition: string, usage: string);\n}\n"],"file":"pattern.d.ts"}

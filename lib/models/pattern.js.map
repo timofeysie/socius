@@ -1,1 +1,0 @@
-{"version":3,"names":[],"mappings":"","sources":["models/pattern.js"],"sourcesContent":["var Pattern = (function () {\n    function Pattern(name, definition, usage) {\n    }\n    return Pattern;\n}());\nexport { Pattern };\n"],"file":"pattern.js"}
