@@ -61,6 +61,16 @@ Next time running npm start, the console gets filled with errors like this:
 
 Had to add this to the tsconfig compilerOptions: ```"types": []```
 
+The tests are not running on an older mac.
+```
+[26:59.0]  generate app files finished in 165 ms
+
+[ ERROR ]  Timed out after 30000 ms while trying to connect to Chrome! The only Chrome revision guaranteed to work is r588429 TimeoutError: Timed out after 30000 ms while trying to connect to Chrome! The only Chrome revision guaranteed to work is r588429 at Timeout.onTimeout
+(/Users/tim/repos/loranthifolia-teretifolia-curator/socius/node_modules/puppeteer/lib/Launcher.js:344:14) at
+ontimeout (timers.js:466:11) at tryOnTimeout (timers.js:304:5) at Timer.listOnTimeout (timers.js:267:5)
+```
+This may be a memory issue.
+
 Planning to use these components in the salicifolia repository.
 
 Next up, @Watch(), @Method(), and @State().
