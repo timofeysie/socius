@@ -12,8 +12,18 @@ import '@stencil/core';
 
 export namespace Components {
 
-  interface CurchodButton {}
-  interface CurchodButtonAttributes extends StencilHTMLAttributes {}
+  interface CurchodButton {
+    'color': 'primary' | 'accent' | 'light';
+    'shape': 'square' | 'round';
+    'size': 'small' | 'default' | 'large';
+    'type': 'button' | 'reset' | 'submit';
+  }
+  interface CurchodButtonAttributes extends StencilHTMLAttributes {
+    'color'?: 'primary' | 'accent' | 'light';
+    'shape'?: 'square' | 'round';
+    'size'?: 'small' | 'default' | 'large';
+    'type'?: 'button' | 'reset' | 'submit';
+  }
 }
 
 declare global {

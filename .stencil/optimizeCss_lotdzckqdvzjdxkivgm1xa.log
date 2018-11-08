@@ -1,0 +1,23 @@
+:host {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box; }
+
+:host([disabled]) {
+  pointer-events: none; }
+
+button {
+  font-family: "Open Sans", "Helvetica Neue", Arial, Helvetica, sans-serif;
+  cursor: pointer;
+  border: none;
+  background-color: #4571c4;
+  color: #ffffff;
+  line-height: 20px;
+  font-size: 14px;
+  padding: 4px 12px;
+  border-radius: 3px; }
+  button:hover {
+    background-color: #315db0; }
+  button:active {
+    background-color: #2b529c; }
+  button:disabled {
+    opacity: 0.4; }

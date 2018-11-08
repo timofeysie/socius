@@ -12,13 +12,36 @@
           ]
         }
       },
+      "props": [
+        {
+          "name": "color",
+          "type": "String",
+          "attr": "color"
+        },
+        {
+          "name": "shape",
+          "type": "String",
+          "attr": "shape"
+        },
+        {
+          "name": "size",
+          "type": "String",
+          "attr": "size"
+        },
+        {
+          "name": "type",
+          "type": "String",
+          "reflectToAttr": true,
+          "attr": "type"
+        }
+      ],
       "shadow": true
     }
   ],
   "collections": [],
   "compiler": {
     "name": "@stencil/core",
-    "version": "0.15.1",
+    "version": "0.15.2",
     "typescriptVersion": "2.9.2"
   },
   "bundles": []

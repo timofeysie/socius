@@ -1,12 +1,12 @@
 :host {
+  -webkit-box-sizing: border-box;
   box-sizing: border-box; }
 
 :host([disabled]) {
   pointer-events: none; }
 
 button {
-  min-height: 4vw;
-  min-width: 20%;
+  min-height: 10%;
   font-family: "Open Sans", "Helvetica Neue", Arial, Helvetica, sans-serif;
   cursor: pointer;
   border: none;

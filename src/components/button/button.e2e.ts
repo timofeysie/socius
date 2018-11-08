@@ -1,4 +1,5 @@
 import { newE2EPage } from '@stencil/core/testing';
+import {} from 'jasmine';
 
 describe('button', () => {
   it('renders', async () => {

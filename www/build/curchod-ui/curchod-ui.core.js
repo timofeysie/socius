@@ -328,7 +328,9 @@ function setAccessor(plt, elm, memberName, oldValue, newValue, isSvg, isHostElem
       // let's set the known @Prop on this element
       // set it directly as property on the element
       setProperty(elm, memberName, newValue);
-      false;
+      (true, isHostElement) && cmpMeta.membersMeta[memberName].reflectToAttrib && 
+      // we also want to set this data to the attribute
+      updateAttribute(elm, cmpMeta.membersMeta[memberName].attribName, newValue, 4 /* Boolean */ === cmpMeta.membersMeta[memberName].propType);
     } else if ('ref' !== memberName) {
       // this member name is a property on this element, but it's not a component
       // this is a native property like "value" or something
@@ -853,6 +855,7 @@ function addChildSsrVNodes(domApi, node, parentVNode, ssrVNodeId, checkNestedEle
 
 function createQueueClient(App, win) {
   const now = () => win.performance.now();
+  const async = false !== App.asyncQueue;
   const resolved = Promise.resolve();
   const highPriority = [];
   const domReads = [];
@@ -895,10 +898,10 @@ function createQueueClient(App, win) {
     // a throttle on how many can run in a certain time
     // DOM READS!!!
         consume(domReads);
-    const start = now() + 7 * Math.ceil(congestion * (1 / 22));
+    const timeout = async ? now() + 7 * Math.ceil(congestion * (1 / 22)) : Infinity;
     // DOM WRITES!!!
-        consumeTimeout(domWrites, start);
-    consumeTimeout(domWritesLow, start);
+        consumeTimeout(domWrites, timeout);
+    consumeTimeout(domWritesLow, timeout);
     if (domWrites.length > 0) {
       domWritesLow.push(...domWrites);
       domWrites.length = 0;
@@ -1217,6 +1220,15 @@ function initCoreComponentOnReady(plt, App, win, apps, queuedComponentOnReadys, 
   }
 }
 
+function attributeChangedCallback(attrPropsMap, elm, attribName, newVal) {
+  // look up to see if we have a property wired up to this attribute name
+  const propName = attrPropsMap[toLowerCase(attribName)];
+  propName && (
+  // there is not need to cast the value since, it's already casted when
+  // the prop is setted
+  elm[propName] = newVal);
+}
+
 function initHostSnapshot(domApi, cmpMeta, hostElm, hostSnapshot, attribName) {
   // the host element has connected to the dom
   // and we've waited a tick to make sure all frameworks
@@ -1411,7 +1423,8 @@ function render(plt, cmpMeta, hostElm, instance, perf) {
         const useNativeShadowDom = 'shadow' === encapsulation && plt.domApi.$supportsShadowDom;
     let reflectHostAttr;
     let rootElm = hostElm;
-    false;
+    true;
+    reflectHostAttr = reflectInstanceValuesToHostAttributes(cmpMeta.componentConstructor.properties, instance);
     // this component SHOULD use native slot/shadow dom
     // this browser DOES support native shadow dom
     // and this is the first render
@@ -1438,10 +1451,10 @@ function render(plt, cmpMeta, hostElm, instance, perf) {
       const vnodeChildren = instance.render && instance.render();
       let vnodeHostData;
       false;
-      false;
+      (true, reflectHostAttr) && (vnodeHostData = vnodeHostData ? Object.assign(vnodeHostData, reflectHostAttr) : reflectHostAttr);
       // tell the platform we're done rendering
       // now any changes will again queue
-      plt.activeRender = false;
+            plt.activeRender = false;
       false;
       // looks like we've got child nodes to render into this host element
       // or we need to update the css class/attrs on the host element
@@ -1450,7 +1463,9 @@ function render(plt, cmpMeta, hostElm, instance, perf) {
       const oldVNode = plt.vnodeMap.get(hostElm) || {};
       oldVNode.elm = rootElm;
       const hostVNode = h(null, vnodeHostData, vnodeChildren);
-      false;
+      true;
+      // only care if we're reflecting values to the host element
+      hostVNode.ishost = true;
       // each patch always gets a new vnode
       // the host element itself isn't patched because it already exists
       // kick off the actual render and any DOM updates
@@ -1472,6 +1487,16 @@ function render(plt, cmpMeta, hostElm, instance, perf) {
     plt.activeRender = false;
     plt.onError(e, 8 /* RenderError */ , hostElm, true);
   }
+}
+
+function reflectInstanceValuesToHostAttributes(properties, instance, reflectHostAttr) {
+  properties && Object.keys(properties).forEach(memberName => {
+    if (properties[memberName].reflectToAttr) {
+      reflectHostAttr = reflectHostAttr || {};
+      reflectHostAttr[memberName] = instance[memberName];
+    }
+  });
+  return reflectHostAttr;
 }
 
 function queueUpdate(plt, elm, perf) {
@@ -1907,11 +1932,23 @@ function initHostElement(plt, cmpMeta, HostElementConstructor, hydratedCssClass,
   };
   if (cmpMeta.membersMeta) {
     const entries = Object.entries(cmpMeta.membersMeta);
-    false;
+    true;
+    {
+      let attrToProp = {};
+      entries.forEach(([propName, {attribName: attribName}]) => {
+        attribName && (attrToProp[attribName] = propName);
+      });
+      attrToProp = Object.assign({}, attrToProp);
+      HostElementConstructor.attributeChangedCallback = function(attribName, _oldVal, newVal) {
+        // the browser has just informed us that an attribute
+        // on the host element has changed
+        attributeChangedCallback(attrToProp, this, attribName, newVal);
+      };
+    }
     // add getters/setters to the host element members
     // these would come from the @Prop and @Method decorators that
     // should create the public API to this component
-    proxyHostElementPrototype(plt, entries, HostElementConstructor, perf);
+        proxyHostElementPrototype(plt, entries, HostElementConstructor, perf);
   }
 }
 
@@ -2035,7 +2072,14 @@ function createPlatformMain(namespace, Context, win, doc, resourcesUrl, hydrated
       // initialize the members on the host element prototype
       // keep a ref to the metadata with the tag as the key
       initHostElement(plt, cmpRegistry[tagNameMeta] = cmpMeta, HostElementConstructor.prototype, hydratedCssClass, perf);
-      false;
+      true;
+      // add which attributes should be observed
+      // at this point the membersMeta only includes attributes which should
+      // be observed, it does not include all props yet, so it's safe to
+      // loop through all of the props (attrs) and observed them
+      // set the array of all the attributes to keep an eye on
+      // https://www.youtube.com/watch?v=RBs21CFBALI
+      HostElementConstructor.observedAttributes = Object.values(cmpMeta.membersMeta).map(member => member.attribName).filter(attribName => !!attribName);
       false;
       win.customElements.define(cmpMeta.tagNameMeta, HostElementConstructor);
       false;
@@ -2101,4 +2145,4 @@ function createPlatformMain(namespace, Context, win, doc, resourcesUrl, hydrated
 
 // esm build which uses es module imports and dynamic imports
 createPlatformMain(namespace, Context, window, document, resourcesUrl, hydratedCssClass, components);
-})(window,document,{},"CurchodUi","hydrated",[["curchod-button","curchod-button",1,0,1]]);
+})(window,document,{},"CurchodUi","hydrated",[["curchod-button","curchod-button",1,[["color",1,0,1,2],["shape",1,0,1,2],["size",1,0,1,2],["type",1,1,1,2]],1]]);

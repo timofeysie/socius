@@ -1,6 +1,3 @@
-/*! Built with http://stenciljs.com */
-(function(window,document,Context,namespace,hydratedCssClass,components,resourcesUrl){"use strict";
-(function(s){s&&(resourcesUrl=s.getAttribute('data-resources-url'))})(document.querySelector("script[data-namespace='curchod-ui']"));
 /**
  * SSR Attribute Names
  */
@@ -2145,4 +2142,3 @@ function createPlatformMain(namespace, Context, win, doc, resourcesUrl, hydrated
 
 // esm build which uses es module imports and dynamic imports
 createPlatformMain(namespace, Context, window, document, resourcesUrl, hydratedCssClass, components);
-})(window,document,{},"CurchodUi","hydrated",[["curchod-button","curchod-button",1,[["color",1,0,1,2],["shape",1,0,1,2],["size",1,0,1,2],["type",1,1,1,2]],1]]);
