@@ -1,1 +1,1 @@
-// mycomponent: CommonJS Main
+// CurchodUi: CommonJS Main

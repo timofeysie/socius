@@ -1,34 +1,17 @@
 {
   "components": [
     {
-      "tag": "my-component",
+      "tag": "curchod-button",
       "dependencies": [],
-      "componentClass": "MyComponent",
-      "componentPath": "components/my-component/my-component.js",
+      "componentClass": "Button",
+      "componentPath": "components/button/button.js",
       "styles": {
         "$": {
           "stylePaths": [
-            "components/my-component/my-component.css"
+            "components/button/button.scss"
           ]
         }
       },
-      "props": [
-        {
-          "name": "first",
-          "type": "String",
-          "attr": "first"
-        },
-        {
-          "name": "last",
-          "type": "String",
-          "attr": "last"
-        },
-        {
-          "name": "middle",
-          "type": "String",
-          "attr": "middle"
-        }
-      ],
       "shadow": true
     }
   ],

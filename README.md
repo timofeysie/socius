@@ -2,15 +2,61 @@
 
 ## Getting started
 
+Fi stencil is not installed, get the latest like this:
+```
+npm install @stencil/core@latest --save-exact
+```
 
+```
 npm init stencil
+```
+
 change is the namespace in the stencil.config.ts file.
+```
 yarn add --dev @stencil/sass
+```
+```
 npm add --save-dev @stencil/sass
+```
 
-I should have used npm i but let add run due to surprise that it was working.
+I should have used *npm i* but let add run due to surprise that it was working.  What's the difference between install and add for npm?  Not sure.
 
+Some problems at first:
+```
 [ts] Cannot find name 'require'. Do you need to install type definitions for node? Try `npm i @types/node`.
+$ npm i @types/node
+[ts] Cannot find name 'describe'.
+$ npm install --save-dev @types/jasmine
+[ts] Property 'toHaveClass' does not exist on type 'Matchers<E2EElement>'.
+SO:  no help for this
+```
+
+
+First test run with button:
+```
+ PASS  src/components/my-component/my-component.spec.ts
+ PASS  src/components/button/button.spec.ts
+ FAIL  src/components/button/button.e2e.ts (16.59s)
+  ● button › renders changes to the name data
+    Evaluation failed: Error: shadow root does not exist for element: button
+      at __puppeteer_evaluation_script__:3:2
+      at ExecutionContext.evaluateHandle (node_modules/puppeteer/lib/ExecutionContext.js:106:13)
+ PASS  src/components/my-component/my-component.e2e.ts (18.697s)
+Test Suites: 1 failed, 3 passed, 4 total
+Tests:       1 failed, 10 passed, 11 total
+Snapshots:   0 total
+Time:        20.191s
+Ran all test suites.
+npm ERR! Test failed.  See above for more details.
+```
+
+Next time running npm start, the console gets filled with errors like this:
+```
+"node_modules/@types/jasmine/index.d.ts, line 19, column 17↵Duplicate identifier 'describe'."
+```
+
+Had to add this to the tsconfig compilerOptions: ```"types": []```
+
 
 
 # Stencil Component Starter

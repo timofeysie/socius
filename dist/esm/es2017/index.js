@@ -1,1 +1,1 @@
-// mycomponent: ES Module
+// CurchodUi: ES Module

@@ -1,6 +1,6 @@
 /*!
  * Built with http://stenciljs.com
- * 2018-11-07T19:57:04
+ * 2018-11-08T06:35:19
  */
 (function(win, doc, namespace, fsNamespace, resourcesUrl, appCore, appCoreSsr, appCorePolyfilled, hydratedCssClass, components) {
 
@@ -134,4 +134,4 @@ function createComponentOnReadyPrototype(win, namespace, HTMLElementPrototype) {
 
   init(win, doc, namespace, fsNamespace, resourcesUrl, appCore, appCoreSsr, appCorePolyfilled, hydratedCssClass, components);
 
-  })(window, document, "mycomponent","mycomponent",0,"mycomponent.core.js","es5-build-disabled.js","hydrated","my-component",HTMLElement.prototype);
+  })(window, document, "CurchodUi","curchod-ui",0,"curchod-ui.core.js","es5-build-disabled.js","hydrated","curchod-button",HTMLElement.prototype);

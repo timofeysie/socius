@@ -1,5 +1,5 @@
 {
-  "name": "my-component",
+  "name": "curchod-ui",
   "version": "0.0.1",
   "description": "Stencil Component Starter",
   "module": "dist/esm/index.js",
@@ -19,8 +19,14 @@
     "@types/node": "^10.12.3"
   },
   "devDependencies": {
-    "@stencil/core": "~0.15.1",
-    "@stencil/sass": "^0.1.1"
+    "@stencil/core": "0.15.2",
+    "@stencil/sass": "^0.1.1",
+    "@types/jasmine": "^2.8.11",
+    "@types/jest": "23.3.9",
+    "@types/puppeteer": "1.9.1",
+    "jest": "23.6.0",
+    "jest-cli": "23.6.0",
+    "puppeteer": "1.8.0"
   },
   "repository": {
     "type": "git",

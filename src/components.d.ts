@@ -12,40 +12,32 @@ import '@stencil/core';
 
 export namespace Components {
 
-  interface MyComponent {
-    'first': string;
-    'last': string;
-    'middle': string;
-  }
-  interface MyComponentAttributes extends StencilHTMLAttributes {
-    'first'?: string;
-    'last'?: string;
-    'middle'?: string;
-  }
+  interface CurchodButton {}
+  interface CurchodButtonAttributes extends StencilHTMLAttributes {}
 }
 
 declare global {
   interface StencilElementInterfaces {
-    'MyComponent': Components.MyComponent;
+    'CurchodButton': Components.CurchodButton;
   }
 
   interface StencilIntrinsicElements {
-    'my-component': Components.MyComponentAttributes;
+    'curchod-button': Components.CurchodButtonAttributes;
   }
 
 
-  interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {}
-  var HTMLMyComponentElement: {
-    prototype: HTMLMyComponentElement;
-    new (): HTMLMyComponentElement;
+  interface HTMLCurchodButtonElement extends Components.CurchodButton, HTMLStencilElement {}
+  var HTMLCurchodButtonElement: {
+    prototype: HTMLCurchodButtonElement;
+    new (): HTMLCurchodButtonElement;
   };
 
   interface HTMLElementTagNameMap {
-    'my-component': HTMLMyComponentElement
+    'curchod-button': HTMLCurchodButtonElement
   }
 
   interface ElementTagNameMap {
-    'my-component': HTMLMyComponentElement;
+    'curchod-button': HTMLCurchodButtonElement;
   }
 
 

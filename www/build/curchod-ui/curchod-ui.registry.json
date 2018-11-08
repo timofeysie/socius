@@ -1,0 +1,15 @@
+{
+  "namespace": "CurchodUi",
+  "fsNamespace": "curchod-ui",
+  "loader": "../curchod-ui.js",
+  "corePolyfilled": "es5-build-disabled.js",
+  "core": "curchod-ui.core.js",
+  "components": {
+    "curchod-button": {
+      "bundleIds": {
+        "$": "curchod-button"
+      },
+      "encapsulation": "shadow"
+    }
+  }
+}
