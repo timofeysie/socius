@@ -8,9 +8,12 @@ class Button {
         this.shape = 'square';
         this.size = 'default';
     }
+    handleClick() {
+        alert('Received the button click!');
+    }
     render() {
         const classMap = this.getCssClassMap();
-        return (h("button", { type: this.type, class: classMap, disabled: this.disabled },
+        return (h("button", { type: this.type, class: classMap, disabled: this.disabled, onClick: () => this.handleClick() },
             h("slot", null)));
     }
     getCssClassMap() {

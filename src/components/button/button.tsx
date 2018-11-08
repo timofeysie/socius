@@ -17,11 +17,16 @@ export class Button {
   @Prop()
   size: 'small' | 'default' | 'large' = 'default';
   disabled: boolean;
+  handleClick() {
+    alert('Received the button click!');
+  }
   render() {
     const classMap = this.getCssClassMap();
-
     return (
-      <button type={this.type} class={classMap} disabled={this.disabled}>
+      <button type={this.type} 
+        class={classMap} 
+        disabled={this.disabled}
+        onClick={ () => this.handleClick()}>
         <slot />
       </button>
     );

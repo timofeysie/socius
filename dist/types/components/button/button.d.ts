@@ -5,6 +5,7 @@ export declare class Button {
     shape: 'square' | 'round';
     size: 'small' | 'default' | 'large';
     disabled: boolean;
+    handleClick(): void;
     render(): JSX.Element;
     private getCssClassMap;
 }
