@@ -2145,4 +2145,4 @@ function createPlatformMain(namespace, Context, win, doc, resourcesUrl, hydrated
 
 // esm build which uses es module imports and dynamic imports
 createPlatformMain(namespace, Context, window, document, resourcesUrl, hydratedCssClass, components);
-})(window,document,{},"CurchodUi","hydrated",[["curchod-button","curchod-button",1,[["color",1,0,1,2],["shape",1,0,1,2],["size",1,0,1,2],["type",1,1,1,2]],1]]);
+})(window,document,{},"CurchodUi","hydrated",[["curchod-button","curchod-button",1,[["color",1,0,1,2],["shape",1,0,1,2],["size",1,0,1,2],["type",1,1,1,2]],1],["curchod-item","curchod-item",1,[["description",1,0,1,2],["label",1,0,1,2]],1]]);

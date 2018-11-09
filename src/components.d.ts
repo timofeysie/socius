@@ -24,15 +24,26 @@ export namespace Components {
     'size'?: 'small' | 'default' | 'large';
     'type'?: 'button' | 'reset' | 'submit';
   }
+
+  interface CurchodItem {
+    'description': string;
+    'label': string;
+  }
+  interface CurchodItemAttributes extends StencilHTMLAttributes {
+    'description'?: string;
+    'label'?: string;
+  }
 }
 
 declare global {
   interface StencilElementInterfaces {
     'CurchodButton': Components.CurchodButton;
+    'CurchodItem': Components.CurchodItem;
   }
 
   interface StencilIntrinsicElements {
     'curchod-button': Components.CurchodButtonAttributes;
+    'curchod-item': Components.CurchodItemAttributes;
   }
 
 
@@ -42,12 +53,20 @@ declare global {
     new (): HTMLCurchodButtonElement;
   };
 
+  interface HTMLCurchodItemElement extends Components.CurchodItem, HTMLStencilElement {}
+  var HTMLCurchodItemElement: {
+    prototype: HTMLCurchodItemElement;
+    new (): HTMLCurchodItemElement;
+  };
+
   interface HTMLElementTagNameMap {
     'curchod-button': HTMLCurchodButtonElement
+    'curchod-item': HTMLCurchodItemElement
   }
 
   interface ElementTagNameMap {
     'curchod-button': HTMLCurchodButtonElement;
+    'curchod-item': HTMLCurchodItemElement;
   }
 
 

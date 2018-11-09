@@ -36,6 +36,32 @@
         }
       ],
       "shadow": true
+    },
+    {
+      "tag": "curchod-item",
+      "dependencies": [],
+      "componentClass": "Item",
+      "componentPath": "components/item/item.js",
+      "styles": {
+        "$": {
+          "stylePaths": [
+            "components/item/item.scss"
+          ]
+        }
+      },
+      "props": [
+        {
+          "name": "description",
+          "type": "String",
+          "attr": "description"
+        },
+        {
+          "name": "label",
+          "type": "String",
+          "attr": "label"
+        }
+      ],
+      "shadow": true
     }
   ],
   "collections": [],

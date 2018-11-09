@@ -75,6 +75,60 @@ Planning to use these components in the salicifolia repository.
 
 Next up, @Watch(), @Method(), and @State().
 
+## JSDocs
+
+```npm run docs```
+
+```
+$ npm -v
+3.10.9
+QuinquenniumF:socius tim$ nvm use 9
+module.js:471
+    throw err;
+    ^
+Error: Cannot find module './nvm-help'
+    at Function.Module._resolveFilename (module.js:469:15)
+    at Function.Module._load (module.js:417:25)
+    at Module.require (module.js:497:17)
+    at require (internal/module.js:20:19)
+    at Object.<anonymous> (/usr/local/lib/node_modules/nvm/bin/nvm:24:3)
+    at Module._compile (module.js:570:32)
+    at Object.Module._extensions..js (module.js:579:10)
+    at Module.load (module.js:487:32)
+    at tryModuleLoad (module.js:446:12)
+    at Function.Module._load (module.js:438:3)
+```    
+
+[SO Solution](https://stackoverflow.com/questions/17668101/nvm-giving-error-while-doing-nvm-ls) and then:
+```
+source ~/.nvm/nvm.sh
+nvm ls
+```
+
+```
+$ npm run docs
+> curchod-ui@0.0.1 docs /Users/tim/repos/loranthifolia-teretifolia-curator/socius
+> stencil build --docs
+[53:30.0]  @stencil/core v0.15.2 🌯
+[53:30.0]  build, curchod-ui, prod mode, started ...
+[53:30.1]  transpile started ...
+[53:32.2]  transpile finished in 2.08 s
+[53:34.8]  module map started ...
+[53:34.8]  generate styles started ...
+[53:35.4]  module map finished in 589 ms
+[53:35.7]  generate styles finished in 961 ms
+[53:35.7]  generate bundles started ...
+[53:35.8]  generate bundles finished in 4 ms
+[53:35.8]  generate app files started ...
+[53:46.4]  generate app files finished in 10.67 s
+[53:58.4]  created readme docs: curchod-button
+[53:58.4]  build finished in 28.38 s
+```
+
+## Docs typo
+*When this feature is used it an be useful for others to easily find and read formatted docs about one component.* should be *can* not *an*.
+https://stenciljs.com/docs/docs-auto-generation
+
 
 # Stencil Component Starter
 
@@ -92,31 +146,11 @@ Stencil components are just Web Components, so they work in any major framework 
 
 ## Getting Started
 
-To start building a new web component using Stencil, clone this repo to a new directory:
-
-```bash
-git clone https://github.com/ionic-team/stencil-component-starter.git my-component
-cd my-component
-git remote rm origin
-```
-
-and run:
-
-```bash
-npm install
-npm start
-```
-
-To build the component for production, run:
-
+To build the component for production, test, generate docs, etc, run:
 ```bash
 npm run build
-```
-
-To run the unit tests for the components, run:
-
-```bash
 npm test
+npm run docs
 ```
 
 Need help? Check out our docs [here](https://stenciljs.com/docs/my-first-component).
