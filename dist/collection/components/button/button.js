@@ -2,7 +2,7 @@
  * Our props color, shape, and size.
  * Instead of defining my types for these props to be of type string,
  * We're going a step further and defining that each prop can be one of several specific strings.
- * This allows for much more effective hints and dot complete a.k.a. IntelliSense.
+ * This allows for much more effective hints and dot complete (a.k.a. intellisense).
  * There are a few specific sizes, colors, shapes, and types that are implemented.
  * On top of that, we initialize those props to some preferred defaults,
  * so that if you simply create a button component with no defined props,
@@ -16,14 +16,47 @@
  */
 export class Button {
     constructor() {
+        /**
+         * Internal props (context and connect)
+         * Inlined decorator.
+         */
         this.type = 'button';
         this.color = 'primary';
         this.shape = 'square';
         this.size = 'default';
     }
     handleClick() {
-        alert('Received the button click!');
+        console.log('Received the button click!');
     }
+    /**
+     * Component lifecycle events
+     * Ordered by their natural call order.
+     */
+    componentWillLoad() {
+        console.log('componentWillLoad');
+    }
+    componentDidLoad() {
+        console.log('componentDidLoad');
+    }
+    componentWillEnter() {
+        console.log('componentWillEnter');
+    }
+    componentDidEnter() {
+        console.log('componentDidEnter');
+    }
+    componentWillLeave() {
+        console.log('componentWillLeave');
+    }
+    componentDidLeave() {
+        console.log('componentDidLeave');
+    }
+    componentDidUnload() {
+        console.log('componentDidUnload');
+    }
+    /**
+     * render() functionq
+     * Always the last one in the class.
+     */
     render() {
         const classMap = this.getCssClassMap();
         console.log('classMap', classMap);

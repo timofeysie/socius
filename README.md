@@ -69,9 +69,22 @@ The tests are not running on an older mac.
 (/Users/tim/repos/loranthifolia-teretifolia-curator/socius/node_modules/puppeteer/lib/Launcher.js:344:14) at
 ontimeout (timers.js:466:11) at tryOnTimeout (timers.js:304:5) at Timer.listOnTimeout (timers.js:267:5)
 ```
-This may be a memory issue.
+This may be a memory issue.  Just running the unit tests by themselves works fine:
+```
+PASS  src/components/item/item.spec.ts
+ PASS  src/components/button/button.spec.ts
 
-Planning to use these components in the salicifolia repository.
+Test Suites: 2 passed, 2 of 4 total
+Tests:       4 passed, 4 total
+Snapshots:   0 total
+Time:        10.358s
+Ran all test suites.
+```
+
+Made a separate script to do just this to separate them from the e2e tests.
+```npm run units``` is the command.
+
+Planning to use these components in the Salicifolia repository.
 
 Next up, @Watch(), @Method(), and @State().
 
@@ -125,10 +138,13 @@ $ npm run docs
 [53:58.4]  build finished in 28.38 s
 ```
 
+
 ## Docs typo
 *When this feature is used it an be useful for others to easily find and read formatted docs about one component.* should be *can* not *an*.
 https://stenciljs.com/docs/docs-auto-generation
 
+*To simplify it all, Stencil breaks it down to so developers have a defined description of when to use each type of testing.* "down to so" should be "down so".
+https://stenciljs.com/docs/testing-overview/
 
 # Stencil Component Starter
 

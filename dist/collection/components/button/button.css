@@ -27,24 +27,24 @@ button {
     background-color: #2b529c; }
   button:disabled {
     opacity: 0.4; }
-    button:disabled.accent {
-      background-color: #c75943; }
-      button:disabled.accent:hover {
-        background-color: #a83a24; }
-      button:disabled.accent:active {
-        background-color: #7e2c1b; }
-    button:disabled.light {
-      background-color: #f0f1f2;
-      color: rgba(0, 0, 0, 0.7); }
-      button:disabled.light:hover {
-        background-color: #e2e3e4; }
-      button:disabled.light:active {
-        background-color: #c8cacb; }
-    button:disabled.round {
-      border-radius: 50px; }
-    button:disabled.small {
-      padding: 2px 8px;
-      font-size: 12px; }
-    button:disabled.large {
-      padding: 8px 20px;
-      font-size: 16px; }
+  button.accent {
+    background-color: #c75943; }
+    button.accent:hover {
+      background-color: #a83a24; }
+    button.accent:active {
+      background-color: #7e2c1b; }
+  button.light {
+    background-color: #f0f1f2;
+    color: rgba(0, 0, 0, 0.7); }
+    button.light:hover {
+      background-color: #e2e3e4; }
+    button.light:active {
+      background-color: #c8cacb; }
+  button.round {
+    border-radius: 50px; }
+  button.small {
+    padding: 2px 8px;
+    font-size: 12px; }
+  button.large {
+    padding: 8px 20px;
+    font-size: 16px; }

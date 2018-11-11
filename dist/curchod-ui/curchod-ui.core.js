@@ -1547,7 +1547,20 @@ async function update(plt, elm, perf, isInitialLoad, instance, ancestorHostEleme
       // create the instance from the user's component class
       // https://www.youtube.com/watch?v=olLxrojmvMg
             instance = initComponentInstance(plt, elm, plt.hostSnapshotMap.get(elm), perf);
-      false;
+      if (true, instance) 
+      // this is the initial load and the instance was just created
+      // fire off the user's componentWillLoad method (if one was provided)
+      // componentWillLoad only runs ONCE, after instance's element has been
+      // assigned as the host element, but BEFORE render() has been called
+      try {
+        if (instance.componentWillLoad) {
+          false;
+          await instance.componentWillLoad();
+          false;
+        }
+      } catch (e) {
+        plt.onError(e, 3 /* WillLoadError */ , elm);
+      }
     } else false;
     // if this component has a render function, let's fire
     // it off and generate a vnode for this
@@ -1725,12 +1738,12 @@ function initComponentLoaded(plt, elm, hydratedCssClass, perf, instance, onReady
   // all is good, this component has been told it's time to finish loading
   // it's possible that we've already decided to destroy this element
   // check if this element has any actively loading child elements
-  if (plt.instanceMap.get(elm) && !plt.isDisconnectedMap.has(elm) && (!elm['s-ld'] || !elm['s-ld'].length)) {
+  if ((instance = plt.instanceMap.get(elm)) && !plt.isDisconnectedMap.has(elm) && (!elm['s-ld'] || !elm['s-ld'].length)) {
     // cool, so at this point this element isn't already being destroyed
     // and it does not have any child elements that are still loading
     // all of this element's children have loaded (if any)
     plt.isCmpReady.set(elm, true);
-    if (!plt.isCmpLoaded.has(elm)) {
+    if (!(hasCmpLoaded = plt.isCmpLoaded.has(elm))) {
       false;
       // remember that this component has loaded
       // isCmpLoaded map is useful to know if we should fire
@@ -1750,8 +1763,11 @@ function initComponentLoaded(plt, elm, hydratedCssClass, perf, instance, onReady
         onReadyCallbacks.forEach(cb => cb(elm));
         plt.onReadyCallbacksMap.delete(elm);
       }
-      false;
-      false;
+      if ((true, !hasCmpLoaded) && instance.componentDidLoad) {
+        false;
+        instance.componentDidLoad();
+        false;
+      } else false;
     } catch (e) {
       plt.onError(e, 4 /* DidLoadError */ , elm);
     }
@@ -1815,8 +1831,17 @@ function disconnectedCallback(plt, elm, perf) {
     // remove all of this element's event, which is good
         plt.domApi.$removeEventListener(elm);
     plt.hasListenersMap.delete(elm);
-    false;
-    false;
+    true;
+    {
+      // call instance componentDidUnload
+      // if we've created an instance for this
+      const instance = plt.instanceMap.get(elm);
+      instance && instance.componentDidUnload && 
+      // call the user's componentDidUnload if there is one
+      instance.componentDidUnload();
+    }
+    // clear CSS var-shim tracking
+        false;
     // clear any references to other elements
     // more than likely we've already deleted these references
     // but let's double check there pal

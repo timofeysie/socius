@@ -15,28 +15,27 @@ button {
 	border-radius: 3px;
   &:hover { background-color: $blue-steel-dark; }
   &:active { background-color: darken($blue-steel-dark, 5%); }
-  &:disabled { opacity: 0.4;
-    &.accent {
-        background-color: $coral;
-        &:hover { background-color: $coral-dark; }
-        &:active { background-color: darken($coral-dark, 10%); }
-      }
-      &.light {
-        background-color: $light;
-        color: rgba(0, 0, 0, 0.7);
-        &:hover { background-color: $light-dark; }
-        &:active { background-color: darken($light-dark, 10%); }
-      }
-      // Shape variations
-      &.round { border-radius: 50px; }
-      // Size variations
-      &.small {
-        padding: 2px 8px;
-        font-size: 12px;
-      }
-      &.large {
-        padding: 8px 20px;
-        font-size: 16px;
-      }
-    }
+  &:disabled { opacity: 0.4; }
+  &.accent {
+    background-color: $coral;
+    &:hover { background-color: $coral-dark; }
+    &:active { background-color: darken($coral-dark, 10%); }
+  }
+  &.light {
+    background-color: $light;
+    color: rgba(0, 0, 0, 0.7);
+    &:hover { background-color: $light-dark; }
+    &:active { background-color: darken($light-dark, 10%); }
+  }
+  // Shape variations
+  &.round { border-radius: 50px; }
+  // Size variations
+  &.small {
+    padding: 2px 8px;
+    font-size: 12px;
+  }
+  &.large {
+    padding: 8px 20px;
+    font-size: 16px;
+  }
 }

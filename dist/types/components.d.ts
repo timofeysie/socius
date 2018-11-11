@@ -16,12 +16,18 @@ export namespace Components {
     'color': 'primary' | 'accent' | 'light';
     'shape': 'square' | 'round';
     'size': 'small' | 'default' | 'large';
+    /**
+    * Internal props (context and connect) Inlined decorator.
+    */
     'type': 'button' | 'reset' | 'submit';
   }
   interface CurchodButtonAttributes extends StencilHTMLAttributes {
     'color'?: 'primary' | 'accent' | 'light';
     'shape'?: 'square' | 'round';
     'size'?: 'small' | 'default' | 'large';
+    /**
+    * Internal props (context and connect) Inlined decorator.
+    */
     'type'?: 'button' | 'reset' | 'submit';
   }
 
