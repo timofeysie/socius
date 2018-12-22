@@ -15,31 +15,31 @@ button {
   font-family: "Open Sans", "Helvetica Neue", Arial, Helvetica, sans-serif;
   cursor: pointer;
   border: none;
-  background-color: #4571c4;
+  background-color: #68c3c0;
   color: #ffffff;
   line-height: 20px;
   font-size: 14px;
   padding: 4px 12px;
   border-radius: 3px; }
   button:hover {
-    background-color: #315db0; }
+    background-color: #33807d; }
   button:active {
-    background-color: #2b529c; }
+    background-color: #2c6e6b; }
   button:disabled {
     opacity: 0.4; }
     button:disabled.accent {
-      background-color: #c75943; }
+      background-color: #F25346; }
       button:disabled.accent:hover {
-        background-color: #a83a24; }
+        background-color: #c75943; }
       button:disabled.accent:active {
-        background-color: #7e2c1b; }
+        background-color: #a64531; }
     button:disabled.light {
-      background-color: #f0f1f2;
+      background-color: #D8D0D1;
       color: rgba(0, 0, 0, 0.7); }
       button:disabled.light:hover {
-        background-color: #e2e3e4; }
+        background-color: #7d686b; }
       button:disabled.light:active {
-        background-color: #c8cacb; }
+        background-color: #615153; }
     button:disabled.round {
       border-radius: 50px; }
     button:disabled.small {

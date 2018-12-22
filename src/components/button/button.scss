@@ -1,6 +1,7 @@
 @import '../../styles/variables.scss';
 :host { box-sizing: border-box; }
 :host([disabled]) { pointer-events: none; }
+button:focus {outline:0;}
 button {
     min-height: 4vw;
     min-width: 20%;
@@ -16,6 +17,7 @@ button {
   &:hover { background-color: $blue-steel-dark; }
   &:active { background-color: darken($blue-steel-dark, 5%); }
   &:disabled { opacity: 0.4; }
+  // color variations
   &.accent {
     background-color: $coral;
     &:hover { background-color: $coral-dark; }
