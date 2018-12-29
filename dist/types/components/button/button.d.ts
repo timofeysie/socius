@@ -19,6 +19,9 @@ export declare class Button {
     /**
      * Internal props (context and connect)
      * Inlined decorator.
+     *
+     * Using reflectToAttr makes sure our disabled prop
+     * stays in sync with an HTML attribute.
      */
     type: 'button' | 'reset' | 'submit';
     color: 'primary' | 'accent' | 'light';

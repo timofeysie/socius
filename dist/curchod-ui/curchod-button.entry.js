@@ -22,6 +22,9 @@ class Button {
         /**
          * Internal props (context and connect)
          * Inlined decorator.
+         *
+         * Using reflectToAttr makes sure our disabled prop
+         * stays in sync with an HTML attribute.
          */
         this.type = 'button';
         this.color = 'primary';

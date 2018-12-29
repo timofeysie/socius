@@ -1,6 +1,6 @@
 /*!
  * Built with http://stenciljs.com
- * 2018-12-29T01:52:57
+ * 2018-12-29T02:21:56
  */
 (function(win, doc, namespace, fsNamespace, resourcesUrl, appCore, appCoreSsr, appCorePolyfilled, hydratedCssClass, components) {
 
@@ -134,4 +134,4 @@ function createComponentOnReadyPrototype(win, namespace, HTMLElementPrototype) {
 
   init(win, doc, namespace, fsNamespace, resourcesUrl, appCore, appCoreSsr, appCorePolyfilled, hydratedCssClass, components);
 
-  })(window, document, "CurchodUi","curchod-ui",0,"curchod-ui.core.js","es5-build-disabled.js","hydrated","curchod-button,curchod-item,folia-tab",HTMLElement.prototype);
+  })(window, document, "FoliaUi","folia-ui",0,"folia-ui.core.js","es5-build-disabled.js","hydrated","folia-button,folia-item,folia-tab,folia-tabs",HTMLElement.prototype);

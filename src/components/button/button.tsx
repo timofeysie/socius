@@ -18,7 +18,7 @@ import { CssClassMap } from '../../utils/interfaces';
  * 
  */
 @Component({
-  tag: 'curchod-button',
+  tag: 'folia-button',
   styleUrl: 'button.scss',
   shadow: true
 })
@@ -26,6 +26,9 @@ export class Button {
   /**
    * Internal props (context and connect)
    * Inlined decorator.
+   * 
+   * Using reflectToAttr makes sure our disabled prop 
+   * stays in sync with an HTML attribute.
    */
   @Prop({ reflectToAttr: true })
   /**
@@ -46,32 +49,32 @@ export class Button {
    */
   disabled: boolean;
   handleClick() {
-    console.log('Received the button click!');
+    console.log('Received the button click.');
   }
   /**
    * Component lifecycle events
    * Ordered by their natural call order.
    */
   componentWillLoad() {
-    console.log('componentWillLoad');
+    //console.log('componentWillLoad');
   }
   componentDidLoad() {
-    console.log('componentDidLoad');
+    //console.log('componentDidLoad');
   }
   componentWillEnter() {
-    console.log('componentWillEnter');
+    //console.log('componentWillEnter');
   }
   componentDidEnter() {
-    console.log('componentDidEnter');
+    //console.log('componentDidEnter');
   }
   componentWillLeave() {
-    console.log('componentWillLeave');
+    //console.log('componentWillLeave');
   }
   componentDidLeave() {
-    console.log('componentDidLeave');
+    //console.log('componentDidLeave');
   }
   componentDidUnload() {
-    console.log('componentDidUnload');
+    //console.log('componentDidUnload');
   }
   /**
    * render() functionq
@@ -79,7 +82,6 @@ export class Button {
    */
   render() {
     const classMap = this.getCssClassMap();
-    console.log('classMap',classMap);
     return (
       <button type={this.type} 
         class={classMap} 

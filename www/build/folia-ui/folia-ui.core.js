@@ -1,6 +1,6 @@
 /*! Built with http://stenciljs.com */
 (function(window,document,Context,namespace,hydratedCssClass,components,resourcesUrl){"use strict";
-(function(s){s&&(resourcesUrl=s.getAttribute('data-resources-url'))})(document.querySelector("script[data-namespace='curchod-ui']"));
+(function(s){s&&(resourcesUrl=s.getAttribute('data-resources-url'))})(document.querySelector("script[data-namespace='folia-ui']"));
 /**
  * SSR Attribute Names
  */
@@ -2176,4 +2176,4 @@ function createPlatformMain(namespace, Context, win, doc, resourcesUrl, hydrated
 
 // esm build which uses es module imports and dynamic imports
 createPlatformMain(namespace, Context, window, document, resourcesUrl, hydratedCssClass, components);
-})(window,document,{},"CurchodUi","hydrated",[["curchod-button","curchod-button",1,[["color",1,0,1,2],["shape",1,0,1,2],["size",1,0,1,2],["type",1,1,1,2]],1],["curchod-item","curchod-item",1,[["description",1,0,1,2],["label",1,0,1,2]],1],["folia-tab","folia-tab",0,[["active",1,0,1,4],["disabled",1,1,1,4],["el",64],["label",1,0,1,2],["openTab",32],["tabs",16]],1]]);
+})(window,document,{},"FoliaUi","hydrated",[["folia-button","folia-button",1,[["color",1,0,1,2],["shape",1,0,1,2],["size",1,0,1,2],["type",1,1,1,2]],1],["folia-item","folia-item",1,[["description",1,0,1,2],["label",1,0,1,2]],1],["folia-tab","folia-tab",0,[["active",1,0,1,4],["disabled",1,1,1,4],["label",1,0,1,2]],1],["folia-tabs","folia-tabs",0,[["el",64],["openTab",32],["tabs",16]],1]]);

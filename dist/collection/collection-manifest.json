@@ -1,7 +1,7 @@
 {
   "components": [
     {
-      "tag": "curchod-button",
+      "tag": "folia-button",
       "dependencies": [],
       "componentClass": "Button",
       "componentPath": "components/button/button.js",
@@ -38,7 +38,7 @@
       "shadow": true
     },
     {
-      "tag": "curchod-item",
+      "tag": "folia-item",
       "dependencies": [],
       "componentClass": "Item",
       "componentPath": "components/item/item.js",
@@ -61,6 +61,53 @@
           "attr": "label"
         }
       ],
+      "shadow": true
+    },
+    {
+      "tag": "folia-tab",
+      "dependencies": [],
+      "componentClass": "Tab",
+      "componentPath": "components/tabs/tab.js",
+      "styles": {},
+      "props": [
+        {
+          "name": "active",
+          "type": "Boolean",
+          "attr": "active"
+        },
+        {
+          "name": "disabled",
+          "type": "Boolean",
+          "reflectToAttr": true,
+          "attr": "disabled"
+        },
+        {
+          "name": "label",
+          "type": "String",
+          "attr": "label"
+        }
+      ],
+      "shadow": true
+    },
+    {
+      "tag": "folia-tabs",
+      "dependencies": [],
+      "componentClass": "Tabs",
+      "componentPath": "components/tabs/tabs.js",
+      "styles": {},
+      "states": [
+        {
+          "name": "tabs"
+        }
+      ],
+      "methods": [
+        {
+          "name": "openTab"
+        }
+      ],
+      "hostElement": {
+        "name": "el"
+      },
       "shadow": true
     }
   ],

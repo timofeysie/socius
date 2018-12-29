@@ -1,7 +1,7 @@
 import { Component, Prop } from '@stencil/core';
 
 @Component({
-  tag: 'curchod-item',
+  tag: 'folia-item',
   styleUrl: 'item.scss',
   shadow: true
 })

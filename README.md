@@ -21,10 +21,26 @@ npm test
 npm run build
 ```
 
+
+## HTML<name>Element
+
+In the demo source, there is an element used, for example the tabs class:
+```
+State() tabs: HTMLFoliaTabElement[] = [];
+```
+
+```HTMLFoliaTabElement[]``` is an interface that is created automatically by Stencil in the components.d.ts file. It provides intellisense for components, with the standard HTML element properties and methods, as well as those are defined in the component.
+
+Just how do those get created?  When we do a build?  In the [third part](https://dev.to/johnwoodruff91/component-libraries-with-stenciljs---your-first-component-3b7p) of the component library tutorial, it just shows how to replace the my-component with mtn-button component using text replace.  At what point did the components.d.ts file get updated then?
+
+
 ## Decorators
 
 
-@State() decorator is used to manage data that is internal to the component.
+* @State() decorator is used to manage data that is internal to the component.
+* @Element() method returns an instance of the host HTMLElement of the component. 
+* @Method() decorator exposes class methods on the public API for the component. 
+
 
 
 ## Initial project setup
@@ -143,10 +159,10 @@ nvm ls
 
 ```
 $ npm run docs
-> curchod-ui@0.0.1 docs /Users/tim/repos/loranthifolia-teretifolia-curator/socius
+> folia-ui@0.0.1 docs /Users/tim/repos/loranthifolia-teretifolia-curator/socius
 > stencil build --docs
 [53:30.0]  @stencil/core v0.15.2 🌯
-[53:30.0]  build, curchod-ui, prod mode, started ...
+[53:30.0]  build, folia-ui, prod mode, started ...
 [53:30.1]  transpile started ...
 [53:32.2]  transpile finished in 2.08 s
 [53:34.8]  module map started ...
@@ -157,7 +173,7 @@ $ npm run docs
 [53:35.8]  generate bundles finished in 4 ms
 [53:35.8]  generate app files started ...
 [53:46.4]  generate app files finished in 10.67 s
-[53:58.4]  created readme docs: curchod-button
+[53:58.4]  created readme docs: folia-button
 [53:58.4]  build finished in 28.38 s
 ```
 

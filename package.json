@@ -1,5 +1,5 @@
 {
-  "name": "curchod-ui",
+  "name": "folia-ui",
   "version": "0.0.1",
   "description": "Stencil Component Starter",
   "module": "dist/esm/index.js",

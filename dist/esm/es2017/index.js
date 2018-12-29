@@ -1,1 +1,1 @@
-// CurchodUi: ES Module
+// FoliaUi: ES Module

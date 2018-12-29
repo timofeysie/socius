@@ -1,1 +1,1 @@
-// CurchodUi: CommonJS Main
+// FoliaUi: CommonJS Main

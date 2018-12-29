@@ -1,5 +1,5 @@
 {
-  "namespace": "foliaUi",
+  "namespace": "FoliaUi",
   "fsNamespace": "folia-ui",
   "loader": "../folia-ui.js",
   "corePolyfilled": "es5-build-disabled.js",
@@ -20,6 +20,12 @@
     "folia-tab": {
       "bundleIds": {
         "$": "folia-tab"
+      },
+      "encapsulation": "shadow"
+    },
+    "folia-tabs": {
+      "bundleIds": {
+        "$": "folia-tabs"
       },
       "encapsulation": "shadow"
     }

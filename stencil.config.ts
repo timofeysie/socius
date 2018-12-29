@@ -2,7 +2,7 @@ import { Config } from '@stencil/core';
 const { sass } = require('@stencil/sass');
 
 export const config: Config = {
-  namespace: 'curchod-ui',
+  namespace: 'folia-ui',
   outputTargets:[
     {
       type: 'dist'

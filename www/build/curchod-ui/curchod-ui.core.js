@@ -1628,9 +1628,15 @@ function defineMember(plt, property, elm, instance, memberName, hostSnapshot, pe
     // add getter/setter to the component instance
     // these will be pointed to the internal data set from the above checks
         definePropertyGetterSetter(instance, memberName, getComponentProp, setComponentProp);
-  } else {
-    false;
-    false;
+  } else if (true, property.elementRef) 
+  // @Element()
+  // add a getter to the element reference using
+  // the member name the component meta provided
+  definePropertyValue(instance, memberName, elm); else if (true, property.method) 
+  // @Method()
+  // add a property "value" on the host element
+  // which we'll bind to the instance's method
+  definePropertyValue(elm, memberName, instance[memberName].bind(instance)); else {
     false;
     false;
   }
@@ -2170,4 +2176,4 @@ function createPlatformMain(namespace, Context, win, doc, resourcesUrl, hydrated
 
 // esm build which uses es module imports and dynamic imports
 createPlatformMain(namespace, Context, window, document, resourcesUrl, hydratedCssClass, components);
-})(window,document,{},"CurchodUi","hydrated",[["curchod-button","curchod-button",1,[["color",1,0,1,2],["shape",1,0,1,2],["size",1,0,1,2],["type",1,1,1,2]],1],["curchod-item","curchod-item",1,[["description",1,0,1,2],["label",1,0,1,2]],1]]);
+})(window,document,{},"CurchodUi","hydrated",[["curchod-button","curchod-button",1,[["color",1,0,1,2],["shape",1,0,1,2],["size",1,0,1,2],["type",1,1,1,2]],1],["curchod-item","curchod-item",1,[["description",1,0,1,2],["label",1,0,1,2]],1],["folia-tab","folia-tab",0,[["active",1,0,1,4],["disabled",1,1,1,4],["el",64],["label",1,0,1,2],["openTab",32],["tabs",16]],1]]);
