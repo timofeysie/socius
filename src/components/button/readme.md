@@ -7,12 +7,12 @@
 
 ## Properties
 
-| Property | Attribute | Description | Type                               |
-| -------- | --------- | ----------- | ---------------------------------- |
-| `color`  | `color`   |             | `"accent" \| "light" \| "primary"` |
-| `shape`  | `shape`   |             | `"round" \| "square"`              |
-| `size`   | `size`    |             | `"default" \| "large" \| "small"`  |
-| `type`   | `type`    |             | `"button" \| "reset" \| "submit"`  |
+| Property | Attribute | Description                                                                                                                                      | Type                               |
+| -------- | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------- |
+| `color`  | `color`   |                                                                                                                                                  | `"accent" \| "light" \| "primary"` |
+| `shape`  | `shape`   |                                                                                                                                                  | `"round" \| "square"`              |
+| `size`   | `size`    |                                                                                                                                                  | `"default" \| "large" \| "small"`  |
+| `type`   | `type`    | Internal props (context and connect) Inlined decorator.  Using reflectToAttr makes sure our disabled prop  stays in sync with an HTML attribute. | `"button" \| "reset" \| "submit"`  |
 
 
 ## CSS Custom Properties

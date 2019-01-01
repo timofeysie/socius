@@ -22,6 +22,18 @@ npm run build
 ```
 
 
+## Using the tabs
+
+This is a work in progress.  To listen to a tab changed event outside of the component and react to it, use something like the following:
+```
+const tabs = document.querySelector('mtn-tabs');
+tabs.addEventListener('change', event => {
+  // You'll find your emitted object under event.detail
+  console.log(`CHANGED TABS TO INDEX ${event.detail.tabId}`);
+});
+```
+
+
 ## HTML<name>Element
 
 In the demo source, there is an element used, for example the tabs class:
@@ -33,14 +45,18 @@ State() tabs: HTMLFoliaTabElement[] = [];
 
 Just how do those get created?  When we do a build?  In the [third part](https://dev.to/johnwoodruff91/component-libraries-with-stenciljs---your-first-component-3b7p) of the component library tutorial, it just shows how to replace the my-component with mtn-button component using text replace.  At what point did the components.d.ts file get updated then?
 
+Changing the library name and re-compiling added the Folia element.  Still it seems like there must be a CLI command to do this...
 
 ## Decorators
 
+A brief description of the decorators offered by StencilJS.
 
 * @State() decorator is used to manage data that is internal to the component.
 * @Element() method returns an instance of the host HTMLElement of the component. 
 * @Method() decorator exposes class methods on the public API for the component. 
-
+* @Event()  can define an EventEmitter to emit [custom events](https://developer.mozilla.org/en-US/docs/Web/Guide/Events/Creating_and_triggering_events)
+* @Listen() decorator - a shorthand way of listening to a DOM Event (ours or standard events such as the scroll event).
+* @Watch() decorator for a specific property on the component class, and decorates a method which is called upon that property being changed.
 
 
 ## Initial project setup

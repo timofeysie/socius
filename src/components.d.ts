@@ -54,7 +54,9 @@ export namespace Components {
   interface FoliaTabs {
     'openTab': (index: number) => void;
   }
-  interface FoliaTabsAttributes extends StencilHTMLAttributes {}
+  interface FoliaTabsAttributes extends StencilHTMLAttributes {
+    'onChange'?: (event: CustomEvent) => void;
+  }
 }
 
 declare global {

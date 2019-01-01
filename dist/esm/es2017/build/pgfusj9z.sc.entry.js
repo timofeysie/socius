@@ -1,4 +1,7 @@
-export class Tabs {
+/*! Built with http://stenciljs.com */
+import { h } from '../folia-ui.core.js';
+
+class Tabs {
     constructor() {
         this.tabs = [];
     }
@@ -57,3 +60,5 @@ export class Tabs {
             "composed": true
         }]; }
 }
+
+export { Tabs as FoliaTabs };

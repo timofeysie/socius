@@ -1,4 +1,7 @@
-export class Button {
+/*! Built with http://stenciljs.com */
+import { h } from '../folia-ui.core.js';
+
+class Button {
     constructor() {
         this.type = 'button';
         this.color = 'primary';
@@ -55,5 +58,7 @@ export class Button {
             "reflectToAttr": true
         }
     }; }
-    static get style() { return "/**style-placeholder:folia-button:**/"; }
+    static get style() { return ":host{-webkit-box-sizing:border-box;box-sizing:border-box}:host([disabled]){pointer-events:none}button:focus{outline:0}button{min-height:4vw;min-width:20%;font-family:Open Sans,Helvetica Neue,Arial,Helvetica,sans-serif;cursor:pointer;border:none;background-color:#68c3c0;color:#fff;line-height:20px;font-size:14px;padding:4px 12px;border-radius:3px}button:hover{background-color:#33807d}button:active{background-color:#2c6e6b}button:disabled{opacity:.4}button.accent{background-color:#f25346}button.accent:hover{background-color:#c75943}button.accent:active{background-color:#a64531}button.light{background-color:#d8d0d1;color:rgba(0,0,0,.7)}button.light:hover{background-color:#7d686b}button.light:active{background-color:#615153}button.round{border-radius:50px}button.small{padding:2px 8px;font-size:12px}button.large{padding:8px 20px;font-size:16px}"; }
 }
+
+export { Button as FoliaButton };
