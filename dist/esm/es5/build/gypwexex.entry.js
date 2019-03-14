@@ -1,2 +1,0 @@
-/*! Built with http://stenciljs.com */
-var Tab=function(){function e(){}return Object.defineProperty(e,"is",{get:function(){return"folia-tab"},enumerable:!0,configurable:!0}),Object.defineProperty(e,"encapsulation",{get:function(){return"shadow"},enumerable:!0,configurable:!0}),Object.defineProperty(e,"properties",{get:function(){return{active:{type:Boolean,attr:"active"},disabled:{type:Boolean,attr:"disabled",reflectToAttr:!0},label:{type:String,attr:"label"}}},enumerable:!0,configurable:!0}),e}();export{Tab as FoliaTab};

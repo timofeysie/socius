@@ -1,5 +1,5 @@
 /*! Built with http://stenciljs.com */
-import { h } from '../folia-ui.core.js';
+const { h } = window.FoliaUi;
 
 class Tab {
     static get is() { return "folia-tab"; }

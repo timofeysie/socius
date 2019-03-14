@@ -1,2 +1,0 @@
-/*! Built with http://stenciljs.com */
-const{h:t}=window.FoliaUi;class a{static get is(){return"folia-tab"}static get encapsulation(){return"shadow"}static get properties(){return{active:{type:Boolean,attr:"active"},disabled:{type:Boolean,attr:"disabled",reflectToAttr:!0},label:{type:String,attr:"label"}}}}export{a as FoliaTab};

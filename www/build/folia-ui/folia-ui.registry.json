@@ -2,30 +2,30 @@
   "namespace": "FoliaUi",
   "fsNamespace": "folia-ui",
   "loader": "../folia-ui.js",
-  "core": "folia-ui.peu1qpfm.js",
-  "corePolyfilled": "folia-ui.suiskrrv.js",
+  "corePolyfilled": "es5-build-disabled.js",
+  "core": "folia-ui.core.js",
   "components": {
     "folia-button": {
       "bundleIds": {
-        "$": "88es3uer"
+        "$": "folia-button"
       },
       "encapsulation": "shadow"
     },
     "folia-item": {
       "bundleIds": {
-        "$": "wruetr4w"
+        "$": "folia-item"
       },
       "encapsulation": "shadow"
     },
     "folia-tab": {
       "bundleIds": {
-        "$": "gypwexex"
+        "$": "folia-tab"
       },
       "encapsulation": "shadow"
     },
     "folia-tabs": {
       "bundleIds": {
-        "$": "pgfusj9z"
+        "$": "folia-tabs"
       },
       "encapsulation": "shadow"
     }

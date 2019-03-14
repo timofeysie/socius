@@ -3,11 +3,22 @@ export class Tabs {
         this.tabs = [];
     }
     componentWillLoad() {
+        // Grab tabs from this component
         this.tabs = Array.from(this.el.querySelectorAll('folia-tab'));
         if (this.tabs.length === 0) {
             throw new Error('[folia-tabs] Must have at least one tab');
         }
     }
+    /**
+     *
+     * @param index
+     * listen to this event outside of this component and react to it as follows:
+     * const tabs = document.querySelector('mtn-tabs');
+     * tabs.addEventListener('change', event => {
+     * // the emitted object will be under event.detail
+     * console.log(`CHANGED TABS TO INDEX ${event.detail.tabId}`);
+     * });
+     */
     openTab(index) {
         if (index >= this.tabs.length) {
             throw new Error(`[folia-tabs] Index ${index} is out of bounds of tabs length`);

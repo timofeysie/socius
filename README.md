@@ -15,11 +15,14 @@ A web component library built with ![Built With Stencil](https://img.shields.io/
 ## Stencil workflow
 
 ```
+npm start (http://localhost:3333/)
 npm run units
 npm run docs
 npm test
 npm run build
 ```
+
+When running the app locally, often you have to do a hard reload to get changes in the styles to show up.
 
 
 ## Using the tabs
