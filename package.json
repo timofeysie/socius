@@ -1,6 +1,6 @@
 {
   "name": "folia-ui",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Stencil Component Starter",
   "module": "dist/esm/index.js",
   "main": "dist/index.js",
@@ -36,7 +36,7 @@
     "type": "git",
     "url": "git+https://github.com/ionic-team/stencil-component-starter.git"
   },
-  "author": "Ionic Team",
+  "author": "TB Curchod",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/ionic-team/stencil"

@@ -44,19 +44,22 @@ In the demo source, there is an element used, for example the tabs class:
 State() tabs: HTMLFoliaTabElement[] = [];
 ```
 
-```HTMLFoliaTabElement[]``` is an interface that is created automatically by Stencil in the components.d.ts file. It provides intellisense for components, with the standard HTML element properties and methods, as well as those are defined in the component.
+
+*HTMLFoliaTabElement[]* is an interface that is created automatically by Stencil in the components.d.ts file. It provides intellisense for components, with the standard HTML element properties and methods, as well as those are defined in the component.
+
 
 Just how do those get created?  When we do a build?  In the [third part](https://dev.to/johnwoodruff91/component-libraries-with-stenciljs---your-first-component-3b7p) of the component library tutorial, it just shows how to replace the my-component with mtn-button component using text replace.  At what point did the components.d.ts file get updated then?
 
 Changing the library name and re-compiling added the Folia element.  Still it seems like there must be a CLI command to do this...
+
 
 ## Decorators
 
 A brief description of the decorators offered by StencilJS.
 
 * @State() decorator is used to manage data that is internal to the component.
-* @Element() method returns an instance of the host HTMLElement of the component. 
-* @Method() decorator exposes class methods on the public API for the component. 
+* @Element() method returns an instance of the host HTMLElement of the component.
+* @Method() decorator exposes class methods on the public API for the component.
 * @Event()  can define an EventEmitter to emit [custom events](https://developer.mozilla.org/en-US/docs/Web/Guide/Events/Creating_and_triggering_events)
 * @Listen() decorator - a shorthand way of listening to a DOM Event (ours or standard events such as the scroll event).
 * @Watch() decorator for a specific property on the component class, and decorates a method which is called upon that property being changed.
@@ -140,15 +143,15 @@ Ran all test suites.
 ```
 
 Made a separate script to do just this to separate them from the e2e tests.
-```npm run units``` is the command.
+*npm run units* is the command.
 
-Planning to use these components in the Salicifolia repository.
 
 Next up, @Watch(), @Method(), and @State().
 
+
 ## JSDocs
 
-```npm run docs```
+*npm run docs*
 
 ```
 $ npm -v
