@@ -15,7 +15,6 @@ const { h } = window.FoliaUi;
  * The CssClassMap defines an interface for this purpose.
  * The class map type is a map of a key, the class name, and the value being a boolean.
  * This specifies whether we want the classes to be applied or not.
- *
  */
 class Button {
     constructor() {
@@ -32,7 +31,13 @@ class Button {
         this.size = 'default';
     }
     handleClick() {
-        console.log('Received the button click.');
+        if (this.el) {
+            let button = this.element.shadowRoot.querySelector('button');
+            button.style.minWidth = '10px';
+            button.style.borderRadius = '50px';
+            button.className = 'spinner';
+            this.element.innerHTML = '';
+        }
     }
     /**
      * Component lifecycle events
@@ -42,7 +47,9 @@ class Button {
         //console.log('componentWillLoad');
     }
     componentDidLoad() {
-        //console.log('componentDidLoad');
+        this.el = this.element;
+        //const style = this.element.style;
+        //console.log('componentDidLoad',style);
     }
     componentWillEnter() {
         //console.log('componentWillEnter');
@@ -82,6 +89,9 @@ class Button {
             "type": String,
             "attr": "color"
         },
+        "element": {
+            "elementRef": true
+        },
         "shape": {
             "type": String,
             "attr": "shape"
@@ -96,7 +106,7 @@ class Button {
             "reflectToAttr": true
         }
     }; }
-    static get style() { return "/**\n * \@prop --background: Background of the button\n * \@prop --background-activated: Background of the button when activated\n * \@prop --background-focused: Background of the button when focused\n */\n:host {\n  -webkit-box-sizing: border-box;\n  box-sizing: border-box; }\n\n:host([disabled]) {\n  pointer-events: none; }\n\nbutton:focus {\n  outline: 0; }\n\nbutton {\n  min-height: 4vw;\n  min-width: 20%;\n  font-family: \"Open Sans\", \"Helvetica Neue\", Arial, Helvetica, sans-serif;\n  cursor: pointer;\n  border: none;\n  background-color: #68c3c0;\n  color: #ffffff;\n  line-height: 20px;\n  font-size: 14px;\n  padding: 4px 12px;\n  border-radius: 3px; }\n  button:hover {\n    background-color: #33807d; }\n  button:active {\n    background-color: #2c6e6b; }\n  button:disabled {\n    opacity: 0.4; }\n  button.accent {\n    background-color: #F25346; }\n    button.accent:hover {\n      background-color: #c75943; }\n    button.accent:active {\n      background-color: #a64531; }\n  button.light {\n    background-color: #D8D0D1;\n    color: rgba(0, 0, 0, 0.7); }\n    button.light:hover {\n      background-color: #7d686b; }\n    button.light:active {\n      background-color: #615153; }\n  button.round {\n    border-radius: 50px; }\n  button.small {\n    padding: 2px 8px;\n    font-size: 12px; }\n  button.large {\n    padding: 8px 20px;\n    font-size: 16px; }"; }
+    static get style() { return "/**\n * \@prop --background: Background of the button\n * \@prop --background-activated: Background of the button when activated\n * \@prop --background-focused: Background of the button when focused\n */\n:host {\n  -webkit-box-sizing: border-box;\n  box-sizing: border-box; }\n\n:host([disabled]) {\n  pointer-events: none; }\n\n\@-webkit-keyframes spinner {\n  to {\n    -webkit-transform: rotate(360deg);\n    transform: rotate(360deg); } }\n\n\@keyframes spinner {\n  to {\n    -webkit-transform: rotate(360deg);\n    transform: rotate(360deg); } }\n\n.spinner:before {\n  content: '';\n  -webkit-box-sizing: border-box;\n  box-sizing: border-box;\n  position: absolute;\n  width: 20px;\n  height: 20px;\n  margin-top: -10px;\n  margin-left: -10px;\n  border-radius: 50%;\n  border: 2px solid #68c3c0;\n  border-top-color: #333;\n  -webkit-animation: spinner .6s linear infinite;\n  animation: spinner .6s linear infinite; }\n\nbutton:focus {\n  outline: 0; }\n\nbutton {\n  -webkit-transition: min-width 1s;\n  transition: min-width 1s;\n  min-height: 3.5vw;\n  min-width: 20%;\n  font-family: \"Open Sans\", \"Helvetica Neue\", Arial, Helvetica, sans-serif;\n  cursor: pointer;\n  border: none;\n  background-color: #68c3c0;\n  color: #ffffff;\n  line-height: 20px;\n  font-size: 14px;\n  padding: 4px 12px;\n  border-radius: 3px; }\n  button:hover {\n    background-color: #33807d; }\n  button:active {\n    background-color: #2c6e6b; }\n  button:disabled {\n    opacity: 0.4; }\n  button.accent {\n    background-color: #F25346; }\n    button.accent:hover {\n      background-color: #c75943; }\n    button.accent:active {\n      background-color: #a64531; }\n  button.light {\n    background-color: #D8D0D1;\n    color: rgba(0, 0, 0, 0.7); }\n    button.light:hover {\n      background-color: #7d686b; }\n    button.light:active {\n      background-color: #615153; }\n  button.round {\n    border-radius: 50px; }\n  button.small {\n    padding: 2px 8px;\n    font-size: 12px; }\n  button.large {\n    padding: 8px 20px;\n    font-size: 16px; }"; }
 }
 
 export { Button as FoliaButton };

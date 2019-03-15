@@ -9,11 +9,29 @@
 :host([disabled]) {
   pointer-events: none; }
 
+@keyframes spinner {
+  to {
+    transform: rotate(360deg); } }
+
+.spinner:before {
+  content: '';
+  box-sizing: border-box;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  margin-top: -10px;
+  margin-left: -10px;
+  border-radius: 50%;
+  border: 2px solid #68c3c0;
+  border-top-color: #333;
+  animation: spinner .6s linear infinite; }
+
 button:focus {
   outline: 0; }
 
 button {
-  min-height: 4vw;
+  transition: min-width 1s;
+  min-height: 3.5vw;
   min-width: 20%;
   font-family: "Open Sans", "Helvetica Neue", Arial, Helvetica, sans-serif;
   cursor: pointer;

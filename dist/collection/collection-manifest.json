@@ -35,6 +35,9 @@
           "attr": "type"
         }
       ],
+      "hostElement": {
+        "name": "element"
+      },
       "shadow": true
     },
     {

@@ -13,9 +13,10 @@ import '../../stencil.core';
  * The CssClassMap defines an interface for this purpose.
  * The class map type is a map of a key, the class name, and the value being a boolean.
  * This specifies whether we want the classes to be applied or not.
- *
  */
 export declare class Button {
+    private el;
+    element: HTMLElement;
     /**
      * Internal props (context and connect)
      * Inlined decorator.

@@ -12,7 +12,6 @@
  * The CssClassMap defines an interface for this purpose.
  * The class map type is a map of a key, the class name, and the value being a boolean.
  * This specifies whether we want the classes to be applied or not.
- *
  */
 export class Button {
     constructor() {
@@ -29,7 +28,13 @@ export class Button {
         this.size = 'default';
     }
     handleClick() {
-        console.log('Received the button click.');
+        if (this.el) {
+            let button = this.element.shadowRoot.querySelector('button');
+            button.style.minWidth = '10px';
+            button.style.borderRadius = '50px';
+            button.className = 'spinner';
+            this.element.innerHTML = '';
+        }
     }
     /**
      * Component lifecycle events
@@ -39,7 +44,9 @@ export class Button {
         //console.log('componentWillLoad');
     }
     componentDidLoad() {
-        //console.log('componentDidLoad');
+        this.el = this.element;
+        //const style = this.element.style;
+        //console.log('componentDidLoad',style);
     }
     componentWillEnter() {
         //console.log('componentWillEnter');
@@ -78,6 +85,9 @@ export class Button {
         "color": {
             "type": String,
             "attr": "color"
+        },
+        "element": {
+            "elementRef": true
         },
         "shape": {
             "type": String,

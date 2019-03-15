@@ -1,21 +1,20 @@
-import { Component, Prop } from '@stencil/core';
+import { Component, Prop, Element } from '@stencil/core';
 import { CssClassMap } from '../../utils/interfaces';
 
 /**
  * Our props color, shape, and size.
- * Instead of defining my types for these props to be of type string, 
- * We're going a step further and defining that each prop can be one of several specific strings. 
+ * Instead of defining my types for these props to be of type string,
+ * We're going a step further and defining that each prop can be one of several specific strings.
  * This allows for much more effective hints and dot complete (a.k.a. intellisense).
- * There are a few specific sizes, colors, shapes, and types that are implemented. 
- * On top of that, we initialize those props to some preferred defaults, 
- * so that if you simply create a button component with no defined props, 
+ * There are a few specific sizes, colors, shapes, and types that are implemented.
+ * On top of that, we initialize those props to some preferred defaults,
+ * so that if you simply create a button component with no defined props,
  * it'll look like a default button.
- * 
- * We use those props to build a map of CSS classes to apply to our components. 
- * The CssClassMap defines an interface for this purpose. 
- * The class map type is a map of a key, the class name, and the value being a boolean. 
- * This specifies whether we want the classes to be applied or not. 
- * 
+ *
+ * We use those props to build a map of CSS classes to apply to our components.
+ * The CssClassMap defines an interface for this purpose.
+ * The class map type is a map of a key, the class name, and the value being a boolean.
+ * This specifies whether we want the classes to be applied or not.
  */
 @Component({
   tag: 'folia-button',
@@ -23,16 +22,18 @@ import { CssClassMap } from '../../utils/interfaces';
   shadow: true
 })
 export class Button {
+  private el;
+  @Element() element: HTMLElement;
   /**
    * Internal props (context and connect)
    * Inlined decorator.
-   * 
-   * Using reflectToAttr makes sure our disabled prop 
+   *
+   * Using reflectToAttr makes sure our disabled prop
    * stays in sync with an HTML attribute.
    */
   @Prop({ reflectToAttr: true })
   /**
-   * Public Property API 
+   * Public Property API
    */
   @Prop() type: 'button' | 'reset' | 'submit' = 'button';
   @Prop() color: 'primary' | 'accent' | 'light' = 'primary';
@@ -49,7 +50,13 @@ export class Button {
    */
   disabled: boolean;
   handleClick() {
-    console.log('Received the button click.');
+    if (this.el) {
+      let button = this.element.shadowRoot.querySelector('button');
+      button.style.minWidth = '10px';
+      button.style.borderRadius = '50px';
+      button.className = 'spinner';
+      this.element.innerHTML = '';
+    }
   }
   /**
    * Component lifecycle events
@@ -59,7 +66,9 @@ export class Button {
     //console.log('componentWillLoad');
   }
   componentDidLoad() {
-    //console.log('componentDidLoad');
+    this.el = this.element;
+    //const style = this.element.style;
+    //console.log('componentDidLoad',style);
   }
   componentWillEnter() {
     //console.log('componentWillEnter');
@@ -83,8 +92,8 @@ export class Button {
   render() {
     const classMap = this.getCssClassMap();
     return (
-      <button type={this.type} 
-        class={classMap} 
+      <button type={this.type}
+        class={classMap}
         disabled={this.disabled}
         onClick={ () => this.handleClick()}>
         <slot />

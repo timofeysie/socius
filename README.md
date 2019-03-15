@@ -25,6 +25,27 @@ npm run build
 When running the app locally, often you have to do a hard reload to get changes in the styles to show up.
 
 
+## Microinteractions
+
+For different types of buttons, we want to show some animations to let the user know something has happened.  These interactions can work with the
+
+In order to get the buttons to start a microinteraction when the user selects means accessing the DOM button element.  First of all, the text should fade out as the button shrinks down to a circle.  Then a spinner should activate and wait for the.
+
+We can use something like this to target a button within it's component like this:
+```
+let button = this.element.shadowRoot.querySelector('button');
+button.style.minWidth = '10px';
+button.style.borderRadius = '50px';
+this.element.innerHTML = '';
+```
+
+You can read about more about it in the [StencilJS docs](https://stenciljs.com/docs/styling/) or about the HTML element on the [MDM](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/style).
+
+Next we create a basic [css only spinner](https://stephanwagner.me/only-css-loading-spinner) and add the class to the button as the transition happens.
+
+Finally for a successful resolution, show a checkmark, then animate it for more delight.
+
+
 ## Using the tabs
 
 This is a work in progress.  To listen to a tab changed event outside of the component and react to it, use something like the following:
