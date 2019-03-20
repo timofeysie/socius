@@ -38,6 +38,8 @@ export declare class Button {
      * publicly on the host element, but only used internally.
      */
     disabled: boolean;
+    state: string;
+    text: string;
     handleClick(): void;
     /**
      * Component lifecycle events

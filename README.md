@@ -6,6 +6,9 @@ A web component library built with ![Built With Stencil](https://img.shields.io/
 ## Table of content
 
 1. [Stencil workflow](#stencil-workflow)
+1. [Microinteractions](#microinteractions)
+1. [Using the tabs](#using-the-tabs)
+1. [HTML<name>Element](#hTML<name>Element)
 1. [Decorators](#decorators)
 1. [Initial project setup](#initial-project-setup)
 3. [JSDocs](#jSDocs)

@@ -26,15 +26,35 @@ export class Button {
         this.color = 'primary';
         this.shape = 'square';
         this.size = 'default';
+        // temp
+        this.state = 'waiting';
     }
     handleClick() {
-        if (this.el) {
-            let button = this.element.shadowRoot.querySelector('button');
-            button.style.minWidth = '10px';
-            button.style.borderRadius = '50px';
-            button.className = 'spinner';
-            this.element.innerHTML = '';
+        let button = this.element.shadowRoot.querySelector('button');
+        if (this.state === 'waiting') {
+            if (this.el) {
+                this.state = 'loading';
+                this.text = this.element.innerHTML;
+                button.style.minWidth = '10px';
+                button.style.borderRadius = '50px';
+                button.className = 'spinner';
+                this.element.innerHTML = '';
+            }
         }
+        else if (this.state === 'loading') {
+            if (this.el) {
+                this.state = 'waiting';
+                button.style.setProperty('transition', 'min-width 1s');
+                button.style.setProperty('min-width', '20%');
+                button.style.setProperty('borderRadius', '3px');
+                button.className = '';
+                this.element.innerHTML = this.text;
+            }
+        }
+        console.log('=====================');
+        console.log('state', this.state);
+        console.log('minWidth', button.style.minWidth);
+        console.log('borderRadius', button.style.borderRadius);
     }
     /**
      * Component lifecycle events

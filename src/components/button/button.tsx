@@ -49,13 +49,29 @@ export class Button {
    * publicly on the host element, but only used internally.
    */
   disabled: boolean;
+  // temp
+  state: string = 'waiting';
+  text: string;
   handleClick() {
-    if (this.el) {
-      let button = this.element.shadowRoot.querySelector('button');
-      button.style.minWidth = '10px';
-      button.style.borderRadius = '50px';
-      button.className = 'spinner';
-      this.element.innerHTML = '';
+    let button = this.element.shadowRoot.querySelector('button');
+    if (this.state === 'waiting') {
+      if (this.el) {
+        this.state = 'loading';
+        this.text = this.element.innerHTML;
+        button.style.minWidth = '10px';
+        button.style.borderRadius = '50px';
+        button.className = 'spinner';
+        this.element.innerHTML = '';
+      }
+    } else if (this.state === 'loading') {
+      if (this.el) {
+        this.state = 'waiting';
+        button.style.setProperty('transition', 'min-width 1s');
+        button.style.setProperty('min-width','20%');
+        button.style.setProperty('borderRadius', '3px');
+        button.className = '';
+        this.element.innerHTML = this.text;
+      }
     }
   }
   /**
