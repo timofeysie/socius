@@ -15,8 +15,8 @@ import '../../stencil.core';
  * This specifies whether we want the classes to be applied or not.
  */
 export declare class Button {
-    private el;
     element: HTMLElement;
+    children: Array<any>;
     /**
      * Internal props (context and connect)
      * Inlined decorator.
@@ -40,7 +40,10 @@ export declare class Button {
     disabled: boolean;
     state: string;
     text: string;
+    stateProperties: any;
     handleClick(): void;
+    removeSpinner(className: any): any;
+    saveState(button: any): void;
     /**
      * Component lifecycle events
      * Ordered by their natural call order.

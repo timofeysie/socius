@@ -30,6 +30,9 @@ button:focus {
   outline: 0; }
 
 button {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
   transition: min-width 1s;
   min-height: 3.5vw;
   min-width: 20%;
@@ -69,3 +72,6 @@ button {
   button.large {
     padding: 8px 20px;
     font-size: 16px; }
+  button.largeLoading {
+    padding: 12px 12px !important;
+    min-width: .5vw; }

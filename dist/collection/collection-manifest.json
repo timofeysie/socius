@@ -35,6 +35,11 @@
           "attr": "type"
         }
       ],
+      "states": [
+        {
+          "name": "children"
+        }
+      ],
       "hostElement": {
         "name": "element"
       },

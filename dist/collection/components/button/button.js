@@ -15,6 +15,7 @@
  */
 export class Button {
     constructor() {
+        this.children = [];
         /**
          * Internal props (context and connect)
          * Inlined decorator.
@@ -32,57 +33,54 @@ export class Button {
     handleClick() {
         let button = this.element.shadowRoot.querySelector('button');
         if (this.state === 'waiting') {
-            if (this.el) {
-                this.state = 'loading';
-                this.text = this.element.innerHTML;
-                button.style.minWidth = '10px';
-                button.style.borderRadius = '50px';
-                button.className = 'spinner';
-                this.element.innerHTML = '';
-            }
+            this.saveState(button);
+            this.state = 'loading';
+            this.text = this.element.innerHTML;
+            this.stateProperties = button.className;
+            button.className = button.className + ' spinner largeLoading';
+            this.element.innerHTML = ' ';
         }
         else if (this.state === 'loading') {
-            if (this.el) {
-                this.state = 'waiting';
-                button.style.setProperty('transition', 'min-width 1s');
-                button.style.setProperty('min-width', '20%');
-                button.style.setProperty('borderRadius', '3px');
-                button.className = '';
+            this.state = 'waiting';
+            button.className = this.removeSpinner(button.className);
+            // This is one way to stop the button jumping back to it's original sizes
+            // instead of using the transition.
+            setTimeout(() => {
                 this.element.innerHTML = this.text;
-            }
+            }, 1000);
         }
-        console.log('=====================');
-        console.log('state', this.state);
-        console.log('minWidth', button.style.minWidth);
-        console.log('borderRadius', button.style.borderRadius);
+    }
+    removeSpinner(className) {
+        let parts = className.split(' ');
+        console.log('parts 1', parts);
+        let index = parts.indexOf('spinner');
+        if (index > -1) {
+            parts.splice(index, 1);
+        }
+        return parts.join();
+    }
+    saveState(button) {
+        this.text = this.element.innerHTML;
+        this.stateProperties = {
+            minWidth: button.style.minWidth,
+            borderRadius: button.style.borderRadius,
+            className: button.className,
+        };
     }
     /**
      * Component lifecycle events
      * Ordered by their natural call order.
      */
     componentWillLoad() {
-        //console.log('componentWillLoad');
+        let slotted = this.element.shadowRoot.querySelector('slot');
+        this.children = slotted.assignedNodes().filter((node) => { return node.nodeName !== '#text'; });
     }
-    componentDidLoad() {
-        this.el = this.element;
-        //const style = this.element.style;
-        //console.log('componentDidLoad',style);
-    }
-    componentWillEnter() {
-        //console.log('componentWillEnter');
-    }
-    componentDidEnter() {
-        //console.log('componentDidEnter');
-    }
-    componentWillLeave() {
-        //console.log('componentWillLeave');
-    }
-    componentDidLeave() {
-        //console.log('componentDidLeave');
-    }
-    componentDidUnload() {
-        //console.log('componentDidUnload');
-    }
+    componentDidLoad() { }
+    componentWillEnter() { }
+    componentDidEnter() { }
+    componentWillLeave() { }
+    componentDidLeave() { }
+    componentDidUnload() { }
     /**
      * render() functionq
      * Always the last one in the class.
@@ -102,6 +100,9 @@ export class Button {
     static get is() { return "folia-button"; }
     static get encapsulation() { return "shadow"; }
     static get properties() { return {
+        "children": {
+            "state": true
+        },
         "color": {
             "type": String,
             "attr": "color"

@@ -48,6 +48,43 @@ Next we create a basic [css only spinner](https://stephanwagner.me/only-css-load
 
 Finally for a successful resolution, show a checkmark, then animate it for more delight.
 
+So far the onclick for the loading phases is working somewhat.  It is not using the styles for each particular button type, only the default.  It needs to work for all the button types we want to create, so that needs some though on handling that.
+
+Another issue is the return phase loses it's animation.  Something about the way we are transitioning the min-width...  Yesterday it was working, but while fixing some other issues it went back to losing the transition again.  It's a little tricky finding out how to work with the shadow DOM for this.
+```
+import { State } from '@stencil/core';
+@State() children: Array<any> = [];
+componentWillLoad() {
+    let slotted = this.host.shadowRoot.querySelector('slot') as HTMLSlotElement;
+    this.children = slotted.assignedNodes().filter((node) => { return node.nodeName !== '#text'; });
+}
+```
+
+This shows up as an empty array.  Not sure why.  Possibly this is out of date [info from SO](https://stackoverflow.com/questions/52421298/web-components-how-to-work-with-children).  From Sept. 2018.  Their current release is version 0.18.1, so there are definitely breaking changes going on.
+
+If you add a div or span to the button text, the element will then show up.  If you get the inner HTML from this then we can get the content to put it back when the button is expanding again:
+```
+this.element.shadowRoot.querySelector('button');
+```
+
+It seems like it is this content which is actually causing the button to jump back to it's original size.  On the default button, with it's shorter text, you do see part of the animation happening.
+
+Doing something like this in the css doesn't help:
+```
+text-overflow: ellipsis;
+white-space: nowrap;
+overflow: hidden;
+```
+
+Setting a timeout works, but it's a bit strange and hacky.  A better way would be to wait for the animation to trigger and then add the text back.  But really, we would like to have the text there and just become revealed as the animation is happening.
+
+However, this is not a show stopper for now.  We should solve more important issues such as preserving the button type styles instead of going back to the defaults.
+
+There is also the *detail* that we are using a round spinner for both rounded and square buttons.  We were rounding off the square buttons, but we should consider using a square spinner for square buttons.
+
+This comes down to architecture.  We need to have separate properties and transition for each variable that we let the user pass in.
+
+
 
 ## Using the tabs
 
