@@ -6,7 +6,6 @@
 @keyframes spinner {
   to {transform: rotate(360deg);}
 }
-
 .spinner:before {
   content: '';
   box-sizing: border-box;
@@ -17,6 +16,7 @@
   animation: spinner .6s linear infinite;
 }
 
+/** spinner types */
 .loading_small:before {
   width: 18px;
   height: 18px;
@@ -34,6 +34,27 @@
   height: 18px;
   margin-top: 1px;
   margin-left: -7px;
+}
+
+/** type: square */
+.square_spinner {
+  display: inline-block;
+  background-color: #0074d9;
+  font-size: 1px;
+  padding: 1px;
+  color: white;
+  animation: roll 3s infinite;
+  transform: rotate(30deg);
+  opacity: .7;
+}
+
+@keyframes roll {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 /** Buttons */

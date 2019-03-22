@@ -35,7 +35,7 @@ export class Button {
   /**
    * Public Property API
    */
-  @Prop() type: 'button' | 'reset' | 'submit' = 'button';
+  @Prop() type: 'button' | 'reset' | 'success' | 'error' | 'submit' = 'button';
   @Prop() color: 'primary' | 'accent' | 'light' = 'primary';
   @Prop() shape: 'square' | 'round' = 'square';
   @Prop() size: 'small' | 'default' | 'large' = 'default';
@@ -53,29 +53,77 @@ export class Button {
   state: string = 'waiting';
   text: string;
   stateProperties;
+
   handleClick() {
     let button = this.element.shadowRoot.querySelector('button');
     if (this.state === 'waiting') {
-      this.saveState(button);
-      this.state = 'loading';
-      this.text = this.element.innerHTML;
-      this.stateProperties = button.className;
-      button.className = button.className+' spinner loading loading_'+this.size;
-      this.element.innerHTML = '&nbsp;';
+      this.startSpinner(button);
     } else if (this.state === 'loading') {
-      this.state = 'waiting';
-      setTimeout(() => {
-        button.className = this.removeClass(button.className, 'spinner');
-        button.className = this.removeClass(button.className, 'loading_'+this.size);
-      },1000);
-      button.className = this.removeClass(button.className, 'loading');
-      button.style.height  = this.stateProperties.height;
-      // This is one way to stop the button jumping back to it's original sizes
-      // instead of using the transition.
-      setTimeout(() => {
-        this.element.innerHTML = this.text;
-      },1000);
+      this.resetSpinner(button);
     }
+  }
+
+  // These actions seem all really redundant now, but each one will
+  // go it's own way.  Some code in common can then be re-factored out
+
+  startSpinner(button) {
+    if (this.shape === 'round' || this.shape !== 'square') {
+      this.startRoundSpinner(button);
+    } else if (this.shape === 'square' || this.shape !== 'round') {
+      this.startSquareSpinner(button);
+    }
+  }
+
+  resetSpinner(button) {
+    if (this.shape === 'round' || this.shape !== 'square') {
+      this.resetRoundSpinner(button);
+    } else if (this.shape === 'square' || this.shape !== 'round') {
+      this.resetSquareSpinner(button);
+    }
+  }
+
+  startSquareSpinner(button) {
+    this.saveState(button);
+    this.state = 'loading';
+    this.text = this.element.innerHTML;
+    this.stateProperties = button.className;
+    button.className = button.className+' square_spinner loading';
+    console.log('utton.className',button.className);
+    this.element.innerHTML = '&nbsp;';
+  }
+
+  startRoundSpinner(button) {
+    this.saveState(button);
+    this.state = 'loading';
+    this.text = this.element.innerHTML;
+    this.stateProperties = button.className;
+    button.className = button.className+' spinner loading loading_'+this.size;
+    this.element.innerHTML = '&nbsp;';
+  }
+
+  resetSquareSpinner(button) {
+    this.state = 'waiting';
+    button.className = this.removeClass(button.className, 'square_spinner');
+    button.className = this.removeClass(button.className, 'loading');
+    button.style.height  = this.stateProperties.height;
+    // This is one way to stop the button jumping back to it's original sizes
+    // instead of using the transition.
+    setTimeout(() => {
+      this.element.innerHTML = this.text;
+    },1000);
+  }
+
+  resetRoundSpinner(button) {
+    this.state = 'waiting';
+    button.className = this.removeClass(button.className, 'spinner');
+    button.className = this.removeClass(button.className, 'loading');
+    button.className = this.removeClass(button.className, 'loading_'+this.size);
+    button.style.height  = this.stateProperties.height;
+    // This is one way to stop the button jumping back to it's original sizes
+    // instead of using the transition.
+    setTimeout(() => {
+      this.element.innerHTML = this.text;
+    },1000);
   }
 
   removeClass(classNames, classToRemove) {

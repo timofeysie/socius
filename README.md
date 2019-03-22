@@ -111,8 +111,52 @@ margin-left: -10px;
 
 We have a bit of a problem as the buttons don't have matching attributes, so we can't straight re-used the same values there.  Or maybe we should set them now so they *can* be used.  Hey, that's an idea!
 
+Since there are only two sizes right now (default is small), these classes did the trick:
+```
+.loading_small:before { ... }
+.loading_large:before { ... }
+```
 
+And in the class:
+```
+button.className = button.className+' spinner loading loading_'+this.size;
+```
 
+It may not be the best architecural solution around, but it might just be the simplest.  At least until we have too many types and too much duplications.  Then another solution will most likely present itself.
+
+The only other thing now besides tweaking the position of the spinners and the width of the loading buttons, is to make the activated via the @Prop type.
+
+Right now we have:
+```
+  @Prop() type: 'button' | 'reset' | 'submit' = 'button';
+```
+
+We need to add loading, success, and error.  Loading is what we have right now with the transition to the spinner.  As mentioned before, success will have a check mark animation, and error, an X.  Then setting the button back to submit will go back to the initial state.  But these states will all be up to the app using the component to take care of.
+
+Then the fun part will be using it in an app to trigger an API call.  Yay!
+
+But first, the work.  This was a problem for all our wet code:
+```
+Operator '===' cannot be applied to types "'button' | 'reset' | 'submit'"
+```
+
+It actually should be shape there, but one inane way to get around this is:
+```
+if (this.shape === 'round' || this.shape !== 'square') {
+```
+
+Expect this to be re-factored.  For now we have a new square spinner (based on an example on [css-tricks](https://css-tricks.com/almanac/properties/t/transform/)that rotates with a css-only spin:
+```
+animation: roll 3s infinite;
+transform: rotate(30deg);
+```
+
+Next up, the type property listener and using the state decorator.
+
+* @State() decorator is used to manage data that is internal to the component.
+* @Watch() decorator for a specific property on the component class, and decorates a method which is called upon that property being changed.
+
+We can use the watch decorator to call a function to then decide what action to perform.  Then, we have to do some work on the demo page which will show a button with selectors to change the properties of the button and trigger our new watch state change function.
 
 
 ## Using the tabs
