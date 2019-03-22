@@ -1678,7 +1678,18 @@ function setValue(plt, elm, memberName, newVal, perf, instance) {
     values[memberName] = newVal;
     instance = plt.instanceMap.get(elm);
     if (instance) {
-      false;
+      true;
+      {
+        const watchMethods = values[WATCH_CB_PREFIX + memberName];
+        if (watchMethods) 
+        // this instance is watching for when this property changed
+        for (let i = 0; i < watchMethods.length; i++) try {
+          // fire off each of the watch methods that are watching this property
+          instance[watchMethods[i]].call(instance, newVal, oldVal, memberName);
+        } catch (e) {
+          console.error(e);
+        }
+      }
       !plt.activeRender && elm['s-rn'] && 
       // looks like this value actually changed, so we've got work to do!
       // but only if we've already rendered, otherwise just chill out

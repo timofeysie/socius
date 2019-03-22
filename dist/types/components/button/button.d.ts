@@ -24,7 +24,7 @@ export declare class Button {
      * Using reflectToAttr makes sure our disabled prop
      * stays in sync with an HTML attribute.
      */
-    type: 'button' | 'reset' | 'success' | 'error' | 'submit';
+    type: 'button' | 'reset' | 'success' | 'error' | 'submit' | 'loading';
     color: 'primary' | 'accent' | 'light';
     shape: 'square' | 'round';
     size: 'small' | 'default' | 'large';
@@ -41,6 +41,7 @@ export declare class Button {
     state: string;
     text: string;
     stateProperties: any;
+    typeChange(newValue: string, oldValue: string): void;
     handleClick(): void;
     startSpinner(button: any): void;
     resetSpinner(button: any): void;

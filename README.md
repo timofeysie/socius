@@ -158,6 +158,9 @@ Next up, the type property listener and using the state decorator.
 
 We can use the watch decorator to call a function to then decide what action to perform.  Then, we have to do some work on the demo page which will show a button with selectors to change the properties of the button and trigger our new watch state change function.
 
+We are currently on Stencil version 0.0.5.  As we found out yesterday, the current release is version 0.18.1.  Before getting too comfortable with the current code, this needs to be updated.  Anyone want to put money on if the app will run with the current version?
+
+
 
 ## Using the tabs
 

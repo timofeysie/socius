@@ -1,4 +1,4 @@
-import { Component, Prop, Element, State } from '@stencil/core';
+import { Component, Prop, Element, State, Watch } from '@stencil/core';
 import { CssClassMap } from '../../utils/interfaces';
 
 /**
@@ -35,7 +35,7 @@ export class Button {
   /**
    * Public Property API
    */
-  @Prop() type: 'button' | 'reset' | 'success' | 'error' | 'submit' = 'button';
+  @Prop() type: 'button' | 'reset' | 'success' | 'error' | 'submit' | 'loading' = 'button';
   @Prop() color: 'primary' | 'accent' | 'light' = 'primary';
   @Prop() shape: 'square' | 'round' = 'square';
   @Prop() size: 'small' | 'default' | 'large' = 'default';
@@ -53,6 +53,16 @@ export class Button {
   state: string = 'waiting';
   text: string;
   stateProperties;
+
+  @Watch('type')
+  typeChange(newValue: string, oldValue: string) {
+    let button = this.element.shadowRoot.querySelector('button');
+    if (oldValue === 'submit' && newValue === 'loading') {
+      this.startSpinner(button);
+    } else if (oldValue === 'loading' && newValue === 'submit') {
+      this.resetSpinner(button);
+    }
+  }
 
   handleClick() {
     let button = this.element.shadowRoot.querySelector('button');

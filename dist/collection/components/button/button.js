@@ -30,6 +30,17 @@ export class Button {
         // temp
         this.state = 'waiting';
     }
+    typeChange(newValue, oldValue) {
+        console.log('newValue', newValue);
+        console.log('oldValue', oldValue);
+        let button = this.element.shadowRoot.querySelector('button');
+        if (oldValue === 'submit' && newValue === 'loading') {
+            this.startSpinner(button);
+        }
+        else if (oldValue === 'loading' && newValue === 'submit') {
+            this.resetSpinner(button);
+        }
+    }
     handleClick() {
         let button = this.element.shadowRoot.querySelector('button');
         if (this.state === 'waiting') {
@@ -167,7 +178,8 @@ export class Button {
         "type": {
             "type": String,
             "attr": "type",
-            "reflectToAttr": true
+            "reflectToAttr": true,
+            "watchCallbacks": ["typeChange"]
         }
     }; }
     static get style() { return "/**style-placeholder:folia-button:**/"; }
