@@ -60,11 +60,12 @@ export class Button {
       this.state = 'loading';
       this.text = this.element.innerHTML;
       this.stateProperties = button.className;
-      button.className = button.className+' spinner largeLoading';
+      button.className = button.className+' spinner loading';
       this.element.innerHTML = ' ';
     } else if (this.state === 'loading') {
       this.state = 'waiting';
-      button.className = this.removeSpinner(button.className);
+      button.className = this.removeClass(button.className, 'spinner');
+      button.className = this.removeClass(button.className, 'loading');
       // This is one way to stop the button jumping back to it's original sizes
       // instead of using the transition.
       setTimeout(() => {
@@ -73,14 +74,13 @@ export class Button {
     }
   }
 
-  removeSpinner(className) {
-    let parts = className.split(' ');
-    console.log('parts 1',parts);
-    let index = parts.indexOf('spinner');
+  removeClass(classNames, classToRemove) {
+    let parts = classNames.split(' ');
+    let index = parts.indexOf(classToRemove);
     if (index > -1) {
        parts.splice(index, 1);
     }
-    return parts.join();
+    return parts.join(' ');
   }
 
   saveState(button) {

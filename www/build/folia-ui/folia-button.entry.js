@@ -40,12 +40,13 @@ class Button {
             this.state = 'loading';
             this.text = this.element.innerHTML;
             this.stateProperties = button.className;
-            button.className = button.className + ' spinner largeLoading';
+            button.className = button.className + ' spinner loading';
             this.element.innerHTML = ' ';
         }
         else if (this.state === 'loading') {
             this.state = 'waiting';
-            button.className = this.removeSpinner(button.className);
+            button.className = this.removeClass(button.className, 'spinner');
+            button.className = this.removeClass(button.className, 'loading');
             // This is one way to stop the button jumping back to it's original sizes
             // instead of using the transition.
             setTimeout(() => {
@@ -53,14 +54,13 @@ class Button {
             }, 1000);
         }
     }
-    removeSpinner(className) {
-        let parts = className.split(' ');
-        console.log('parts 1', parts);
-        let index = parts.indexOf('spinner');
+    removeClass(classNames, classToRemove) {
+        let parts = classNames.split(' ');
+        let index = parts.indexOf(classToRemove);
         if (index > -1) {
             parts.splice(index, 1);
         }
-        return parts.join();
+        return parts.join(' ');
     }
     saveState(button) {
         this.text = this.element.innerHTML;
@@ -127,7 +127,7 @@ class Button {
             "reflectToAttr": true
         }
     }; }
-    static get style() { return "/**\n * \@prop --background: Background of the button\n * \@prop --background-activated: Background of the button when activated\n * \@prop --background-focused: Background of the button when focused\n */\n:host {\n  -webkit-box-sizing: border-box;\n  box-sizing: border-box; }\n\n:host([disabled]) {\n  pointer-events: none; }\n\n\@-webkit-keyframes spinner {\n  to {\n    -webkit-transform: rotate(360deg);\n    transform: rotate(360deg); } }\n\n\@keyframes spinner {\n  to {\n    -webkit-transform: rotate(360deg);\n    transform: rotate(360deg); } }\n\n.spinner:before {\n  content: '';\n  -webkit-box-sizing: border-box;\n  box-sizing: border-box;\n  position: absolute;\n  width: 20px;\n  height: 20px;\n  margin-top: -10px;\n  margin-left: -10px;\n  border-radius: 50%;\n  border: 2px solid #68c3c0;\n  border-top-color: #333;\n  -webkit-animation: spinner .6s linear infinite;\n  animation: spinner .6s linear infinite; }\n\nbutton:focus {\n  outline: 0; }\n\nbutton {\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  overflow: hidden;\n  -webkit-transition: min-width 1s;\n  transition: min-width 1s;\n  min-height: 3.5vw;\n  min-width: 20%;\n  font-family: \"Open Sans\", \"Helvetica Neue\", Arial, Helvetica, sans-serif;\n  cursor: pointer;\n  border: none;\n  background-color: #68c3c0;\n  color: #ffffff;\n  line-height: 20px;\n  font-size: 14px;\n  padding: 4px 12px;\n  border-radius: 3px; }\n  button:hover {\n    background-color: #33807d; }\n  button:active {\n    background-color: #2c6e6b; }\n  button:disabled {\n    opacity: 0.4; }\n  button.accent {\n    background-color: #F25346; }\n    button.accent:hover {\n      background-color: #c75943; }\n    button.accent:active {\n      background-color: #a64531; }\n  button.light {\n    background-color: #D8D0D1;\n    color: rgba(0, 0, 0, 0.7); }\n    button.light:hover {\n      background-color: #7d686b; }\n    button.light:active {\n      background-color: #615153; }\n  button.round {\n    border-radius: 50px; }\n  button.small {\n    padding: 2px 8px;\n    font-size: 12px; }\n  button.large {\n    padding: 8px 20px;\n    font-size: 16px; }\n  button.largeLoading {\n    padding: 12px 12px !important;\n    min-width: .5vw; }"; }
+    static get style() { return "/**\n * \@prop --background: Background of the button\n * \@prop --background-activated: Background of the button when activated\n * \@prop --background-focused: Background of the button when focused\n */\n:host {\n  -webkit-box-sizing: border-box;\n  box-sizing: border-box; }\n\n:host([disabled]) {\n  pointer-events: none; }\n\n\@-webkit-keyframes spinner {\n  to {\n    -webkit-transform: rotate(360deg);\n    transform: rotate(360deg); } }\n\n\@keyframes spinner {\n  to {\n    -webkit-transform: rotate(360deg);\n    transform: rotate(360deg); } }\n\n.spinner:before {\n  content: '';\n  -webkit-box-sizing: border-box;\n  box-sizing: border-box;\n  position: absolute;\n  width: 20px;\n  height: 20px;\n  margin-top: -10px;\n  margin-left: -10px;\n  border-radius: 50%;\n  border: 2px solid #68c3c0;\n  border-top-color: #333;\n  -webkit-animation: spinner .6s linear infinite;\n  animation: spinner .6s linear infinite; }\n\nbutton:focus {\n  outline: 0; }\n\nbutton {\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  overflow: hidden;\n  -webkit-transition: min-width 1s;\n  transition: min-width 1s;\n  min-height: 3.5vw;\n  min-width: 20%;\n  font-family: \"Open Sans\", \"Helvetica Neue\", Arial, Helvetica, sans-serif;\n  cursor: pointer;\n  border: none;\n  background-color: #68c3c0;\n  color: #ffffff;\n  line-height: 20px;\n  font-size: 14px;\n  padding: 4px 12px;\n  border-radius: 3px; }\n  button:hover {\n    background-color: #33807d; }\n  button:active {\n    background-color: #2c6e6b; }\n  button:disabled {\n    opacity: 0.4; }\n  button.accent {\n    background-color: #F25346; }\n    button.accent:hover {\n      background-color: #c75943; }\n    button.accent:active {\n      background-color: #a64531; }\n  button.light {\n    background-color: #D8D0D1;\n    color: rgba(0, 0, 0, 0.7); }\n    button.light:hover {\n      background-color: #7d686b; }\n    button.light:active {\n      background-color: #615153; }\n  button.round {\n    border-radius: 50px; }\n  button.small {\n    padding: 2px 8px;\n    font-size: 12px; }\n  button.large {\n    padding: 8px 20px;\n    font-size: 16px; }\n  button.loading {\n    padding: 12px 12px !important;\n    min-width: .5vw; }"; }
 }
 
 export { Button as FoliaButton };

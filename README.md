@@ -84,6 +84,19 @@ There is also the *detail* that we are using a round spinner for both rounded an
 
 This comes down to architecture.  We need to have separate properties and transition for each variable that we let the user pass in.
 
+If we just work with the classes, this would be the cleanest approach.  
+
+Right now, the styles are kept, but the button is jumping a bit vertically.  Also, even with a space inserted in the temporary text, the space collapses and expands again only when the text is put back into the inner HTML.
+
+Current issues to fix before a push to npm:
+
+* vertical jumping
+* collapsing space
+* all large before inspector opens
+
+
+
+
 
 
 ## Using the tabs

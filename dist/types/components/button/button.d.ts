@@ -42,7 +42,7 @@ export declare class Button {
     text: string;
     stateProperties: any;
     handleClick(): void;
-    removeSpinner(className: any): any;
+    removeClass(classNames: any, classToRemove: any): any;
     saveState(button: any): void;
     /**
      * Component lifecycle events
