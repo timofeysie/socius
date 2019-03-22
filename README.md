@@ -90,9 +90,16 @@ Right now, the styles are kept, but the button is jumping a bit vertically.  Als
 
 Current issues to fix before a push to npm:
 
-* vertical jumping
-* collapsing space
-* all large before inspector opens
+1. vertical jumping
+2. collapsing space
+3. spinner needs to match type sizes
+4. all large before inspector opens
+
+Both 1 & 2 are related and may be the same fix.  After including the old &nbsp; as the loading inner HTML, the height is close to what it should be.  But the spinner now needs to be the correct size for each type.  Css variables anyone?
+
+Also, the smaller buttons jump to large size during the transition.  Removing the padding that was added to fix an issue when there was a problem in the JavaScript solves this.  Just goes to show that refactoring to removing unused things after a bit of work is so important.  If it's not doing anything, get it out of there!
+
+Actually, things like the empty lifecycle hooks and StencilJS best-practice notes are helpful since this is a new framework, so those things can stay.
 
 
 

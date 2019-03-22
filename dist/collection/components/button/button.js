@@ -38,12 +38,13 @@ export class Button {
             this.text = this.element.innerHTML;
             this.stateProperties = button.className;
             button.className = button.className + ' spinner loading';
-            this.element.innerHTML = ' ';
+            this.element.innerHTML = '&nbsp;';
         }
         else if (this.state === 'loading') {
             this.state = 'waiting';
             button.className = this.removeClass(button.className, 'spinner');
             button.className = this.removeClass(button.className, 'loading');
+            button.style.height = this.stateProperties.height;
             // This is one way to stop the button jumping back to it's original sizes
             // instead of using the transition.
             setTimeout(() => {
@@ -63,9 +64,10 @@ export class Button {
         this.text = this.element.innerHTML;
         this.stateProperties = {
             minWidth: button.style.minWidth,
-            borderRadius: button.style.borderRadius,
+            height: button.style.height,
             className: button.className,
         };
+        console.log('this.stateProperties', this.stateProperties);
     }
     /**
      * Component lifecycle events

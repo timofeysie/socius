@@ -7,7 +7,7 @@ import { CssClassMap } from '../../utils/interfaces';
 })
 export class Tabs {
 
-    @Element() el: HTMLElement;
+  @Element() el: HTMLElement;
 	@State() tabs: HTMLFoliaTabElement[] = [];
 	@Event({ eventName: 'change' }) onChange: EventEmitter;
 
@@ -21,8 +21,8 @@ export class Tabs {
 
 
 	/**
-	 * 
-	 * @param index 
+	 *
+	 * @param index
 	 * listen to this event outside of this component and react to it as follows:
 	 * const tabs = document.querySelector('mtn-tabs');
 	 * tabs.addEventListener('change', event => {
@@ -39,7 +39,6 @@ export class Tabs {
 		if (!this.tabs[index].disabled) {
 			this.tabs = this.tabs.map((tab, i) => {
 				tab.active = i === index;
-				console.log('tab '+index+' is active? '+tab.active);
 				return tab;
 			});
     	}
@@ -48,7 +47,7 @@ export class Tabs {
     render() {
 	  const classMap = this.getCssClassMap();
 	  console.log('classMap',classMap);
-  
+
       	return (
 			<div class={classMap}>
 			{ this.tabs.map((tab: HTMLFoliaTabElement, index: number) => {
@@ -69,8 +68,8 @@ export class Tabs {
 			</div>
       	);
     }
-  
-    
+
+
     private getCssClassMap(): CssClassMap {
         return {
           'tabs-list': true
