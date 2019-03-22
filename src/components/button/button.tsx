@@ -60,11 +60,14 @@ export class Button {
       this.state = 'loading';
       this.text = this.element.innerHTML;
       this.stateProperties = button.className;
-      button.className = button.className+' spinner loading';
+      button.className = button.className+' spinner loading loading_'+this.size;
       this.element.innerHTML = '&nbsp;';
     } else if (this.state === 'loading') {
       this.state = 'waiting';
-      button.className = this.removeClass(button.className, 'spinner');
+      setTimeout(() => {
+        button.className = this.removeClass(button.className, 'spinner');
+        button.className = this.removeClass(button.className, 'loading_'+this.size);
+      },1000);
       button.className = this.removeClass(button.className, 'loading');
       button.style.height  = this.stateProperties.height;
       // This is one way to stop the button jumping back to it's original sizes

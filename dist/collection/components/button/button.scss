@@ -2,6 +2,7 @@
 :host { box-sizing: border-box; }
 :host([disabled]) { pointer-events: none; }
 
+/** Spinner */
 @keyframes spinner {
   to {transform: rotate(360deg);}
 }
@@ -10,16 +11,32 @@
   content: '';
   box-sizing: border-box;
   position: absolute;
-  width: 20px;
-  height: 20px;
-  margin-top: -10px;
-  margin-left: -10px;
   border-radius: 50%;
   border: 2px solid $blue-steel;
   border-top-color: #333;
   animation: spinner .6s linear infinite;
 }
 
+.loading_small:before {
+  width: 18px;
+  height: 18px;
+  margin-top: 1px;
+  margin-left: -7px;
+}
+.loading_large:before {
+  width: 32px;
+  height: 32px;
+  margin-top: -6px;
+  margin-left: -18px;
+}
+.loading_default:before {
+  width: 18px;
+  height: 18px;
+  margin-top: 1px;
+  margin-left: -7px;
+}
+
+/** Buttons */
 button:focus {outline:0;}
 button {
   text-overflow: ellipsis;

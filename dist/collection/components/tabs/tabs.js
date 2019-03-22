@@ -26,7 +26,6 @@ export class Tabs {
         if (!this.tabs[index].disabled) {
             this.tabs = this.tabs.map((tab, i) => {
                 tab.active = i === index;
-                console.log('tab ' + index + ' is active? ' + tab.active);
                 return tab;
             });
         }

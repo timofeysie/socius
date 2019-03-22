@@ -95,12 +95,21 @@ Current issues to fix before a push to npm:
 3. spinner needs to match type sizes
 4. all large before inspector opens
 
-Both 1 & 2 are related and may be the same fix.  After including the old &nbsp; as the loading inner HTML, the height is close to what it should be.  But the spinner now needs to be the correct size for each type.  Css variables anyone?
+Both 1 & 2 are related and may be the same fix.  After including the old &nbsp; as the loading inner HTML, the height is close to what it should be.  But the spinner now needs to be the correct size for each type.  Css variables anyone?  Or a sass mixin?
 
 Also, the smaller buttons jump to large size during the transition.  Removing the padding that was added to fix an issue when there was a problem in the JavaScript solves this.  Just goes to show that refactoring to removing unused things after a bit of work is so important.  If it's not doing anything, get it out of there!
 
 Actually, things like the empty lifecycle hooks and StencilJS best-practice notes are helpful since this is a new framework, so those things can stay.
 
+These are the styles in the spinner that need to be adjust for the custom button size properties:
+```
+width: 20px;
+height: 20px;
+margin-top: -10px;
+margin-left: -10px;
+```
+
+We have a bit of a problem as the buttons don't have matching attributes, so we can't straight re-used the same values there.  Or maybe we should set them now so they *can* be used.  Hey, that's an idea!
 
 
 
