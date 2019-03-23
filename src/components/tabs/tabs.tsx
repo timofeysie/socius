@@ -45,9 +45,7 @@ export class Tabs {
   	}
 
     render() {
-	  const classMap = this.getCssClassMap();
-	  console.log('classMap',classMap);
-
+	     const classMap = this.getCssClassMap();
       	return (
 			<div class={classMap}>
 			{ this.tabs.map((tab: HTMLFoliaTabElement, index: number) => {

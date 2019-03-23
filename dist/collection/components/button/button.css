@@ -30,11 +30,14 @@
   margin-top: 1px;
   margin-left: -7px; }
 
+.loading_large {
+  width: 19px; }
+
 .loading_large:before {
   width: 32px;
   height: 32px;
   margin-top: -6px;
-  margin-left: -18px; }
+  margin-left: -17px; }
 
 .loading_default:before {
   width: 18px;
@@ -64,9 +67,6 @@ button:focus {
   outline: 0; }
 
 button {
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
   transition: min-width 1s;
   min-height: 3.5vw;
   min-width: 20%;
@@ -108,3 +108,81 @@ button {
     font-size: 16px; }
   button.loading {
     min-width: .5vw; }
+
+/** Success checkmark */
+@keyframes checkmark_small_animation {
+  0% {
+    height: 0;
+    width: 0;
+    opacity: 1; }
+  20% {
+    height: 0;
+    width: 0.48em;
+    opacity: 1; }
+  40% {
+    height: 1.2em;
+    width: 0.48em;
+    opacity: 1; }
+  100% {
+    height: 1.2em;
+    width: 0.48em;
+    opacity: 1; } }
+
+@keyframes checkmark_large_animation {
+  0% {
+    height: 0;
+    width: 0;
+    opacity: 1; }
+  20% {
+    height: 0;
+    width: 0.58em;
+    opacity: 1; }
+  40% {
+    height: 1.7em;
+    width: 0.88em;
+    opacity: 1; }
+  100% {
+    height: 1.7em;
+    width: 0.88em;
+    opacity: 1; } }
+
+.checkmark.draw:after {
+  animation-duration: 800ms;
+  animation-timing-function: ease;
+  animation-name: checkmark;
+  transform: scaleX(-1) rotate(135deg); }
+
+.checkmark:after {
+  opacity: 1;
+  transform-origin: left top;
+  border-right: 3px solid #5cb85c;
+  border-top: 3px solid #5cb85c;
+  content: '';
+  position: absolute; }
+
+.checkmark_small.draw:after {
+  animation-name: checkmark_small_animation; }
+
+.checkmark_small:after {
+  height: 1.2em;
+  width: 0.48em;
+  left: 0.75em;
+  top: 4.7em; }
+
+.checkmark_default.draw:after {
+  animation-name: checkmark_small_animation; }
+
+.checkmark_default:after {
+  height: 1.2em;
+  width: 0.48em;
+  left: 0.75em;
+  top: 4.7em; }
+
+.checkmark_large.draw:after {
+  animation-name: checkmark_large_animation; }
+
+.checkmark_large:after {
+  height: 1.7em;
+  width: 0.88em;
+  left: 0.75em;
+  top: 3.9em; }

@@ -61,6 +61,10 @@ export class Button {
       this.startSpinner(button);
     } else if (oldValue === 'loading' && newValue === 'submit') {
       this.resetSpinner(button);
+    } else if (oldValue === 'loading' && newValue === 'success') {
+      this.showCheckmark(button);
+    } else if (newValue === 'button') {
+      this.resetToButton(button);
     }
   }
 
@@ -98,7 +102,6 @@ export class Button {
     this.text = this.element.innerHTML;
     this.stateProperties = button.className;
     button.className = button.className+' square_spinner loading';
-    console.log('utton.className',button.className);
     this.element.innerHTML = '&nbsp;';
   }
 
@@ -134,6 +137,24 @@ export class Button {
     setTimeout(() => {
       this.element.innerHTML = this.text;
     },1000);
+  }
+
+  showCheckmark(button) {
+    button.className = this.removeClass(button.className, 'spinner');
+    button.className = this.removeClass(button.className, 'loading_'+this.size);
+    button.className = button.className + ' draw checkmark checkmark_'+this.size;
+  }
+
+  /**  If the height was changed previously, reset that first.
+  * Next set the ubbton classes to all the property values.
+  * Finally, return the text content.
+  */
+  resetToButton(button) {
+    if (this.stateProperties.height) {
+      button.style.height  = this.stateProperties.height;
+    }
+    button.className = this.type+' '+this.color+' '+this.shape+' '+this.size;
+    this.element.innerHTML = this.text;
   }
 
   removeClass(classNames, classToRemove) {

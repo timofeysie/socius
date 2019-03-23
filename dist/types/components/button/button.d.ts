@@ -49,6 +49,12 @@ export declare class Button {
     startRoundSpinner(button: any): void;
     resetSquareSpinner(button: any): void;
     resetRoundSpinner(button: any): void;
+    showCheckmark(button: any): void;
+    /**  If the height was changed previously, reset that first.
+    * Next set the ubbton classes to all the property values.
+    * Finally, return the text content.
+    */
+    resetToButton(button: any): void;
     removeClass(classNames: any, classToRemove: any): any;
     saveState(button: any): void;
     /**

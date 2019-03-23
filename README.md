@@ -161,6 +161,8 @@ We can use the watch decorator to call a function to then decide what action to 
 We are currently on Stencil version 0.0.5.  As we found out yesterday, the current release is version 0.18.1.  Before getting too comfortable with the current code, this needs to be updated.  Anyone want to put money on if the app will run with the current version?
 
 
+Using [this codepen](https://codepen.io/scottloway/pen/zqoLyQ) by Scott Galloway as a starting point for the success checkmark animation.
+
 
 ## Using the tabs
 
