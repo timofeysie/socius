@@ -41,20 +41,33 @@ export declare class Button {
     state: string;
     text: string;
     stateProperties: any;
+    /** State transitions depend on the previous state.
+    * If the buttin type is submit, then changing the type to loading will trigger the
+    * shape specific animation.   Then changing the type to either success or error
+    * will trigger those animations.
+    */
     typeChange(newValue: string, oldValue: string): void;
+    /** Debug method.  Should not be deployed */
     handleClick(): void;
+    /** Check the shape and call the appropriate function. */
     startSpinner(button: any): void;
     resetSpinner(button: any): void;
+    showSuccessCheckmark(button: any): void;
+    showError(button: any): void;
     startSquareSpinner(button: any): void;
     startRoundSpinner(button: any): void;
     resetSquareSpinner(button: any): void;
     resetRoundSpinner(button: any): void;
-    showCheckmark(button: any): void;
+    showRoundSuccessCheckmark(button: any): void;
+    showSquareSuccessCheckmark(button: any): void;
+    showRoundError(button: any): void;
+    showSquareError(button: any): void;
     /**  If the height was changed previously, reset that first.
     * Next set the ubbton classes to all the property values.
     * Finally, return the text content.
     */
     resetToButton(button: any): void;
+    /** Find the class to remove in the class names and return the string without it. */
     removeClass(classNames: any, classToRemove: any): any;
     saveState(button: any): void;
     /**

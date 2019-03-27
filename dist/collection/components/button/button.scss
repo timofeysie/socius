@@ -4,9 +4,12 @@
 
 $small: 18px;
 $large: 32px;
-/** Spinner */
+/* Spinner */
 @keyframes spinner {
-  to {transform: rotate(360deg);}
+  to {
+    transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+  }
 }
 .spinner:before {
   content: '';
@@ -18,7 +21,7 @@ $large: 32px;
   animation: spinner .6s linear infinite;
 }
 
-/** spinner types */
+/* spinner types */
 .loading_small:before {
   width: $small;
   height: $small;
@@ -41,7 +44,7 @@ $large: 32px;
   margin-left: -7px;
 }
 
-/** type: square */
+/* type: square */
 .square_spinner {
   display: inline-block;
   background-color: #0074d9;
@@ -50,19 +53,22 @@ $large: 32px;
   color: white;
   animation: roll 3s infinite;
   transform: rotate(30deg);
+  -webkit-transform: rotate(30deg);
   opacity: .7;
 }
 
 @keyframes roll {
   0% {
     transform: rotate(0);
+    -webkit-transform: rotate(0);
   }
   100% {
     transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
   }
 }
 
-/** Buttons */
+/* Buttons */
 button:focus {outline:0;}
 button {
   transition: min-width 1s;
@@ -108,7 +114,7 @@ button {
   }
 }
 
-/** Success checkmark */
+/* Success checkmark */
 $brand-success: #5cb85c;
 $loader-size: 3em;
 $check-height: $loader-size/2.5;
@@ -168,10 +174,12 @@ $check-color: $brand-success;
     animation-timing-function: ease;
     animation-name: checkmark;
     transform: scaleX(-1) rotate(135deg);
+    -webkit-transform: scaleX(-1) rotate(135deg);
   }
   &:after {
     opacity: 1;
     transform-origin: left top;
+    -webkit-transform-origin: left top;
     border-right: $check-thickness solid $check-color;
     border-top: $check-thickness solid $check-color;
     content: '';
@@ -210,4 +218,25 @@ $check-color: $brand-success;
     left: $check-left;
     top: $check-height+2.7;
   }
+}
+
+/* Error */
+.error-circle {
+  position:relative;
+  background: #990000;
+}
+.error-circle:after,.error-circle:before {
+    position: absolute;
+    content: '';
+    width: 10%;
+    left: 45%;
+    top: 10%;
+    height: 80%;
+    background-color: white;
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+}
+.error-circle:before {
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
 }

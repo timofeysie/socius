@@ -163,6 +163,14 @@ We are currently on Stencil version 0.0.5.  As we found out yesterday, the curre
 
 Using [this codepen](https://codepen.io/scottloway/pen/zqoLyQ) by Scott Galloway as a starting point for the success checkmark animation.
 
+Making two separate version for the small and large sizes is easy to do.  Using Sass variables makes it a little more interesting, but there is still a lot of repetition in the classes that can be eliminated given a bit more time.
+
+For now, the success checkmark animation is working fine.  Next will be the error microinteration which would be to show an X instead of a check.
+
+The basic checkbox without needing any inner divs or svg elements is easy enough.  [This SO question](https://stackoverflow.com/questions/27526821/how-to-draw-error-icon-with-css-only-exactly-like-in-the-image) has a range of answers providing examples of all different kinds.  The [jbutler483](https://stackoverflow.com/users/3436942/jbutler483) with 17,803 reputation points (as if that matters) shows the simplest solution.
+
+Next we need to animate it.  That might not be so simple.
+
 
 ## Using the tabs
 

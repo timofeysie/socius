@@ -54,6 +54,11 @@ export class Button {
   text: string;
   stateProperties;
 
+  /** State transitions depend on the previous state.
+  * If the buttin type is submit, then changing the type to loading will trigger the
+  * shape specific animation.   Then changing the type to either success or error
+  * will trigger those animations.
+  */
   @Watch('type')
   typeChange(newValue: string, oldValue: string) {
     let button = this.element.shadowRoot.querySelector('button');
@@ -62,12 +67,15 @@ export class Button {
     } else if (oldValue === 'loading' && newValue === 'submit') {
       this.resetSpinner(button);
     } else if (oldValue === 'loading' && newValue === 'success') {
-      this.showCheckmark(button);
-    } else if (newValue === 'button') {
+      this.showSuccessCheckmark(button);
+    } else if (oldValue === 'loading' && newValue === 'error') {
+      this.showError(button);
+    } else if (newValue === 'button' || newValue === 'reset') {
       this.resetToButton(button);
     }
   }
 
+  /** Debug method.  Should not be deployed */
   handleClick() {
     let button = this.element.shadowRoot.querySelector('button');
     if (this.state === 'waiting') {
@@ -80,6 +88,7 @@ export class Button {
   // These actions seem all really redundant now, but each one will
   // go it's own way.  Some code in common can then be re-factored out
 
+  /** Check the shape and call the appropriate function. */
   startSpinner(button) {
     if (this.shape === 'round' || this.shape !== 'square') {
       this.startRoundSpinner(button);
@@ -93,6 +102,22 @@ export class Button {
       this.resetRoundSpinner(button);
     } else if (this.shape === 'square' || this.shape !== 'round') {
       this.resetSquareSpinner(button);
+    }
+  }
+
+  showSuccessCheckmark(button) {
+    if (this.shape === 'round' || this.shape !== 'square') {
+      this.showRoundSuccessCheckmark(button);
+    } else if (this.shape === 'square' || this.shape !== 'round') {
+      this.showSquareSuccessCheckmark(button);
+    }
+  }
+
+  showError(button) {
+    if (this.shape === 'round' || this.shape !== 'square') {
+      this.showRoundError(button);
+    } else if (this.shape === 'square' || this.shape !== 'round') {
+      this.showSquareError(button);
     }
   }
 
@@ -119,7 +144,7 @@ export class Button {
     button.className = this.removeClass(button.className, 'square_spinner');
     button.className = this.removeClass(button.className, 'loading');
     button.style.height  = this.stateProperties.height;
-    // This is one way to stop the button jumping back to it's original sizes
+    // This stops the button jumping back to it's original sizes
     // instead of using the transition.
     setTimeout(() => {
       this.element.innerHTML = this.text;
@@ -132,17 +157,37 @@ export class Button {
     button.className = this.removeClass(button.className, 'loading');
     button.className = this.removeClass(button.className, 'loading_'+this.size);
     button.style.height  = this.stateProperties.height;
-    // This is one way to stop the button jumping back to it's original sizes
-    // instead of using the transition.
     setTimeout(() => {
       this.element.innerHTML = this.text;
     },1000);
   }
 
-  showCheckmark(button) {
+  showRoundSuccessCheckmark(button) {
     button.className = this.removeClass(button.className, 'spinner');
+    button.className = this.removeClass(button.className, this.shape+'_spinner');
     button.className = this.removeClass(button.className, 'loading_'+this.size);
     button.className = button.className + ' draw checkmark checkmark_'+this.size;
+  }
+
+  showSquareSuccessCheckmark(button) {
+    button.className = this.removeClass(button.className, 'spinner');
+    button.className = this.removeClass(button.className, this.shape+'_spinner');
+    button.className = this.removeClass(button.className, 'loading_'+this.size);
+    button.className = button.className + ' draw checkmark checkmark_'+this.size;
+  }
+
+  showRoundError(button) {
+    button.className = this.removeClass(button.className, 'spinner');
+    button.className = this.removeClass(button.className, this.shape+'_spinner');
+    button.className = this.removeClass(button.className, 'loading_'+this.size);
+    button.className = button.className + ' error-circle';
+  }
+
+  showSquareError(button) {
+    button.className = this.removeClass(button.className, 'spinner');
+    button.className = this.removeClass(button.className, this.shape+'_spinner');
+    button.className = this.removeClass(button.className, 'loading_'+this.size);
+    button.className = button.className + ' error-circle';
   }
 
   /**  If the height was changed previously, reset that first.
@@ -157,6 +202,7 @@ export class Button {
     this.element.innerHTML = this.text;
   }
 
+  /** Find the class to remove in the class names and return the string without it. */
   removeClass(classNames, classToRemove) {
     let parts = classNames.split(' ');
     let index = parts.indexOf(classToRemove);

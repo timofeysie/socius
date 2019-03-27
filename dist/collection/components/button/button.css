@@ -9,10 +9,11 @@
 :host([disabled]) {
   pointer-events: none; }
 
-/** Spinner */
+/* Spinner */
 @keyframes spinner {
   to {
-    transform: rotate(360deg); } }
+    transform: rotate(360deg);
+    -webkit-transform: rotate(360deg); } }
 
 .spinner:before {
   content: '';
@@ -23,7 +24,7 @@
   border-top-color: #333;
   animation: spinner .6s linear infinite; }
 
-/** spinner types */
+/* spinner types */
 .loading_small:before {
   width: 18px;
   height: 18px;
@@ -45,7 +46,7 @@
   margin-top: 1px;
   margin-left: -7px; }
 
-/** type: square */
+/* type: square */
 .square_spinner {
   display: inline-block;
   background-color: #0074d9;
@@ -54,15 +55,18 @@
   color: white;
   animation: roll 3s infinite;
   transform: rotate(30deg);
+  -webkit-transform: rotate(30deg);
   opacity: .7; }
 
 @keyframes roll {
   0% {
-    transform: rotate(0); }
+    transform: rotate(0);
+    -webkit-transform: rotate(0); }
   100% {
-    transform: rotate(360deg); } }
+    transform: rotate(360deg);
+    -webkit-transform: rotate(360deg); } }
 
-/** Buttons */
+/* Buttons */
 button:focus {
   outline: 0; }
 
@@ -109,7 +113,7 @@ button {
   button.loading {
     min-width: .5vw; }
 
-/** Success checkmark */
+/* Success checkmark */
 @keyframes checkmark_small_animation {
   0% {
     height: 0;
@@ -150,11 +154,13 @@ button {
   animation-duration: 800ms;
   animation-timing-function: ease;
   animation-name: checkmark;
-  transform: scaleX(-1) rotate(135deg); }
+  transform: scaleX(-1) rotate(135deg);
+  -webkit-transform: scaleX(-1) rotate(135deg); }
 
 .checkmark:after {
   opacity: 1;
   transform-origin: left top;
+  -webkit-transform-origin: left top;
   border-right: 3px solid #5cb85c;
   border-top: 3px solid #5cb85c;
   content: '';
@@ -186,3 +192,23 @@ button {
   width: 0.88em;
   left: 0.75em;
   top: 3.9em; }
+
+/* Error */
+.error-circle {
+  position: relative;
+  background: #990000; }
+
+.error-circle:after, .error-circle:before {
+  position: absolute;
+  content: '';
+  width: 10%;
+  left: 45%;
+  top: 10%;
+  height: 80%;
+  background-color: white;
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg); }
+
+.error-circle:before {
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg); }
