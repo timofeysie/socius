@@ -14,18 +14,21 @@
   </div>
 
   <div>
-    <folia-button id="test_button" shape="round" color="accent" size="small" type="button">
+    <folia-button id="test_button" shape="round" color="accent" size="small" type="button" onclick="handleClick()">
       Round accent small
     </folia-button>
   </div>
   <script>
-function testButton(type) {
-  var testButtonElement = document.getElementById("test_button");
-  var selectorValue = document.getElementById(type).value;
-  var typeAttribute = testButtonElement.getAttribute(type);
-  testButtonElement.setAttribute(type, selectorValue);
-}
-</script>
+    function testButton(type) {
+      var testButtonElement = document.getElementById("test_button");
+      var selectorValue = document.getElementById(type).value;
+      var typeAttribute = testButtonElement.getAttribute(type);
+      testButtonElement.setAttribute(type, selectorValue);
+    }
+    function handleClick() {
+      console.log('client can handle click events');
+    }
+  </script>
 
 <label for="shape">Shape</label>
 <select id="shape" name="shape" size="3" onchange="testButton('shape')">

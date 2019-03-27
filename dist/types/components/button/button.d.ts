@@ -47,21 +47,9 @@ export declare class Button {
     * will trigger those animations.
     */
     typeChange(newValue: string, oldValue: string): void;
-    /** Debug method.  Should not be deployed */
-    handleClick(): void;
-    /** Check the shape and call the appropriate function. */
-    startSpinner(button: any): void;
-    resetSpinner(button: any): void;
-    showSuccessCheckmark(button: any): void;
-    showError(button: any): void;
-    startSquareSpinner(button: any): void;
-    startRoundSpinner(button: any): void;
-    resetSquareSpinner(button: any): void;
-    resetRoundSpinner(button: any): void;
-    showRoundSuccessCheckmark(button: any): void;
-    showSquareSuccessCheckmark(button: any): void;
-    showRoundError(button: any): void;
-    showSquareError(button: any): void;
+    startShapeSpinner(button: any): void;
+    resetShapeSpinner(button: any): void;
+    showSucceessOrError(button: any): void;
     /**  If the height was changed previously, reset that first.
     * Next set the ubbton classes to all the property values.
     * Finally, return the text content.

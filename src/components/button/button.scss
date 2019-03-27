@@ -11,7 +11,7 @@ $large: 32px;
     -webkit-transform: rotate(360deg);
   }
 }
-.spinner:before {
+.spinner::before {
   content: '';
   box-sizing: border-box;
   position: absolute;
@@ -22,7 +22,7 @@ $large: 32px;
 }
 
 /* spinner types */
-.loading_small:before {
+.loading_small::before {
   width: $small;
   height: $small;
   margin-top: 1px;
@@ -31,13 +31,13 @@ $large: 32px;
 .loading_large {
   width: 19px;
 }
-.loading_large:before {
+.loading_large::before {
   width: $large;
   height: $large;
   margin-top: -6px;
   margin-left: -17px;
 }
-.loading_default:before {
+.loading_default::before {
   width: 18px;
   height: 18px;
   margin-top: 1px;
@@ -169,14 +169,14 @@ $check-color: $brand-success;
 }
 
 .checkmark {
-  &.draw:after {
+  &.draw::after {
     animation-duration: 800ms;
     animation-timing-function: ease;
     animation-name: checkmark;
     transform: scaleX(-1) rotate(135deg);
     -webkit-transform: scaleX(-1) rotate(135deg);
   }
-  &:after {
+  &::after {
     opacity: 1;
     transform-origin: left top;
     -webkit-transform-origin: left top;
@@ -187,10 +187,10 @@ $check-color: $brand-success;
   }
 }
 .checkmark_small {
-  &.draw:after {
+  &.draw::after {
     animation-name: checkmark_small_animation;
   }
-  &:after {
+  &::after {
     height: $check-height;
     width: $check-width;
     left: $check-left;
@@ -198,10 +198,10 @@ $check-color: $brand-success;
   }
 }
 .checkmark_default {
-  &.draw:after {
+  &.draw::after {
     animation-name: checkmark_small_animation;
   }
-  &:after {
+  &::after {
     height: $check-height;
     width: $check-width;
     left: $check-left;
@@ -209,10 +209,10 @@ $check-color: $brand-success;
   }
 }
 .checkmark_large {
-  &.draw:after {
+  &.draw::after {
     animation-name: checkmark_large_animation;
   }
-  &:after {
+  &::after {
     height: $check-height+.5;
     width: $check-width+.4;
     left: $check-left;
@@ -221,11 +221,25 @@ $check-color: $brand-success;
 }
 
 /* Error */
-.error-circle {
+.error_circle {
   position:relative;
   background: #990000;
 }
-.error-circle:after,.error-circle:before {
+.error_circle::before {
+    position: absolute;
+    content: '';
+    width: 10%;
+    left: 45%;
+    top: 10%;
+    height: 80%;
+    background-color: white;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    animation-duration: 1800ms;
+    animation-timing-function: ease;
+    animation-name: error_before_animation;
+}
+.error_circle::after {
     position: absolute;
     content: '';
     width: 10%;
@@ -235,8 +249,39 @@ $check-color: $brand-success;
     background-color: white;
     transform: rotate(-45deg);
     -webkit-transform: rotate(-45deg);
+    animation-duration: 800ms;
+    animation-timing-function: ease;
+    animation-name: error_after_animation;
 }
-.error-circle:before {
+@keyframes error_before_animation {
+  0% {
+    height: 0;
+    width: 0;
+    left: 0;
+    top: 0;
+    transform: rotate(0);
+  }
+  100% {
+    height: 80%;
+    width: 10%;
+    left: 45%;
+    top: 10%;
     transform: rotate(45deg);
-    -webkit-transform: rotate(45deg);
+  }
+}
+@keyframes error_after_animation {
+  0% {
+    height: 0;
+    width: 0;
+    left: 0;
+    top: 0;
+    transform: rotate(0);
+  }
+  100% {
+    height: 80%;
+    width: 10%;
+    left: 45%;
+    top: 10%;
+    transform: rotate(-45deg);
+  }
 }

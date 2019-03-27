@@ -169,7 +169,7 @@ For now, the success checkmark animation is working fine.  Next will be the erro
 
 The basic checkbox without needing any inner divs or svg elements is easy enough.  [This SO question](https://stackoverflow.com/questions/27526821/how-to-draw-error-icon-with-css-only-exactly-like-in-the-image) has a range of answers providing examples of all different kinds.  The [jbutler483](https://stackoverflow.com/users/3436942/jbutler483) with 17,803 reputation points (as if that matters) shows the simplest solution.
 
-Next we need to animate it.  That might not be so simple.
+Next we need to animate it.  That might not be so simple.  We also need to refactor the button JavaScript at this point, as the initial state solution has a lot of repeated code in there.  We want to get closer to a single function for each state that works for both shape and size.
 
 
 ## Using the tabs
