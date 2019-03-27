@@ -71,6 +71,7 @@ button:focus {
   outline: 0; }
 
 button {
+  position: relative;
   transition: min-width 1s;
   min-height: 3.5vw;
   min-width: 20%;
@@ -172,8 +173,8 @@ button {
 .checkmark_small::after {
   height: 1.2em;
   width: 0.48em;
-  left: 0.75em;
-  top: 4.7em; }
+  left: 0;
+  top: 12px; }
 
 .checkmark_default.draw::after {
   animation-name: checkmark_small_animation; }
@@ -181,8 +182,8 @@ button {
 .checkmark_default::after {
   height: 1.2em;
   width: 0.48em;
-  left: 0.75em;
-  top: 4.7em; }
+  left: 0;
+  top: 12px; }
 
 .checkmark_large.draw::after {
   animation-name: checkmark_large_animation; }
@@ -190,8 +191,8 @@ button {
 .checkmark_large::after {
   height: 1.7em;
   width: 0.88em;
-  left: 0.75em;
-  top: 3.9em; }
+  left: 4px;
+  top: 17px; }
 
 /* Error */
 .error_circle {

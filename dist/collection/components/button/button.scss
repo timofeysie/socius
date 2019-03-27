@@ -71,6 +71,7 @@ $large: 32px;
 /* Buttons */
 button:focus {outline:0;}
 button {
+  position: relative;
   transition: min-width 1s;
   min-height: 3.5vw;
   min-width: 20%;
@@ -119,7 +120,6 @@ $brand-success: #5cb85c;
 $loader-size: 3em;
 $check-height: $loader-size/2.5;
 $check-width: $check-height/2.5;
-$check-left: ($loader-size/6 + $loader-size/12);
 $check-thickness: 3px;
 $check-color: $brand-success;
 
@@ -193,8 +193,8 @@ $check-color: $brand-success;
   &::after {
     height: $check-height;
     width: $check-width;
-    left: $check-left;
-    top: $check-height+3.5;
+    left: 0;
+    top: 12px;
   }
 }
 .checkmark_default {
@@ -204,8 +204,8 @@ $check-color: $brand-success;
   &::after {
     height: $check-height;
     width: $check-width;
-    left: $check-left;
-    top: $check-height+3.5;
+    left: 0;
+    top: 12px;
   }
 }
 .checkmark_large {
@@ -215,8 +215,8 @@ $check-color: $brand-success;
   &::after {
     height: $check-height+.5;
     width: $check-width+.4;
-    left: $check-left;
-    top: $check-height+2.7;
+    left: 4px;
+    top: 17px;
   }
 }
 
