@@ -4,6 +4,7 @@
 
 $small: 18px;
 $large: 32px;
+
 /* Spinner */
 @keyframes spinner {
   to {
@@ -73,7 +74,8 @@ button:focus {outline:0;}
 button {
   position: relative;
   transition: min-width 1s;
-  min-height: 3.5vw;
+  min-height: 27px;
+  max-height: 27px;
   min-width: 20%;
 	font-family: $font-family;
 	cursor: pointer;
@@ -105,6 +107,7 @@ button {
   &.small {
     padding: 2px 8px;
     font-size: 12px;
+    width: 27px;
   }
   &.large {
     padding: 8px 20px;
@@ -115,13 +118,20 @@ button {
   }
 }
 
-/* Success checkmark */
+/* Success checkmark ----------------------------- */
 $brand-success: #5cb85c;
-$loader-size: 3em;
-$check-height: $loader-size/2.5;
-$check-width: $check-height/2.5;
-$check-thickness: 3px;
 $check-color: $brand-success;
+
+$loader-size_large: 3em;
+$check-height_large: $loader-size_large/2.5;
+$check-width_large: $check-height_large/2.5;
+$check-left_large: ($loader-size_large/6 + $loader-size_large/12);
+$check-thickness_large: 3px;
+
+$loader-size_small: 1.9em;
+$check-height_small: $loader-size_small/1.4;
+$check-width_small: $check-height_small/2.4;
+$check-thickness_small: 3px;
 
 @keyframes checkmark_small_animation {
   0% {
@@ -131,17 +141,17 @@ $check-color: $brand-success;
   }
   20% {
     height: 0;
-    width: $check-width;
+    width: $check-width_small;
     opacity: 1;
   }
   40% {
-    height: $check-height;
-    width: $check-width;
+    height: $check-height_small;
+    width: $check-width_small;
     opacity: 1;
   }
   100% {
-    height: $check-height;
-    width: $check-width;
+    height: $check-height_small;
+    width: $check-width_small;
     opacity: 1;
   }
 }
@@ -153,17 +163,17 @@ $check-color: $brand-success;
   }
   20% {
     height: 0;
-    width: $check-width+.1;
+    width: $check-width_large+.1;
     opacity: 1;
   }
   40% {
-    height: $check-height+.5;
-    width: $check-width+.4;
+    height: $check-height_large+.5;
+    width: $check-width_large+.4;
     opacity: 1;
   }
   100% {
-    height: $check-height+.5;
-    width: $check-width+.4;
+    height: $check-height_large+.5;
+    width: $check-width_large+.4;
     opacity: 1;
   }
 }
@@ -186,26 +196,15 @@ $check-color: $brand-success;
     position: absolute;
   }
 }
-.checkmark_small {
+.checkmark_small, .checkmark_default {
   &.draw::after {
     animation-name: checkmark_small_animation;
   }
   &::after {
-    height: $check-height;
-    width: $check-width;
-    left: 0;
-    top: 12px;
-  }
-}
-.checkmark_default {
-  &.draw::after {
-    animation-name: checkmark_small_animation;
-  }
-  &::after {
-    height: $check-height;
-    width: $check-width;
-    left: 0;
-    top: 12px;
+    height: $check-height_small;
+    width: $check-width_small;
+    left: 3px;
+    top: 13.5px;
   }
 }
 .checkmark_large {
@@ -213,14 +212,14 @@ $check-color: $brand-success;
     animation-name: checkmark_large_animation;
   }
   &::after {
-    height: $check-height+.5;
-    width: $check-width+.4;
+    height: $check-height_large+.5;
+    width: $check-width_large+.4;
     left: 4px;
     top: 17px;
   }
 }
 
-/* Error */
+/* Error  -------------------------------------- */
 .error_circle {
   position:relative;
   background: #990000;

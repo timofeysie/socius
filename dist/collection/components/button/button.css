@@ -73,7 +73,8 @@ button:focus {
 button {
   position: relative;
   transition: min-width 1s;
-  min-height: 3.5vw;
+  min-height: 27px;
+  max-height: 27px;
   min-width: 20%;
   font-family: "Open Sans", "Helvetica Neue", Arial, Helvetica, sans-serif;
   cursor: pointer;
@@ -107,14 +108,15 @@ button {
     border-radius: 50px; }
   button.small {
     padding: 2px 8px;
-    font-size: 12px; }
+    font-size: 12px;
+    width: 27px; }
   button.large {
     padding: 8px 20px;
     font-size: 16px; }
   button.loading {
     min-width: .5vw; }
 
-/* Success checkmark */
+/* Success checkmark ----------------------------- */
 @keyframes checkmark_small_animation {
   0% {
     height: 0;
@@ -122,15 +124,15 @@ button {
     opacity: 1; }
   20% {
     height: 0;
-    width: 0.48em;
+    width: 0.56548em;
     opacity: 1; }
   40% {
-    height: 1.2em;
-    width: 0.48em;
+    height: 1.35714em;
+    width: 0.56548em;
     opacity: 1; }
   100% {
-    height: 1.2em;
-    width: 0.48em;
+    height: 1.35714em;
+    width: 0.56548em;
     opacity: 1; } }
 
 @keyframes checkmark_large_animation {
@@ -140,15 +142,15 @@ button {
     opacity: 1; }
   20% {
     height: 0;
-    width: 0.58em;
+    width: 1.05238em;
     opacity: 1; }
   40% {
-    height: 1.7em;
-    width: 0.88em;
+    height: 2.5em;
+    width: 1.35238em;
     opacity: 1; }
   100% {
-    height: 1.7em;
-    width: 0.88em;
+    height: 2.5em;
+    width: 1.35238em;
     opacity: 1; } }
 
 .checkmark.draw::after {
@@ -167,34 +169,25 @@ button {
   content: '';
   position: absolute; }
 
-.checkmark_small.draw::after {
+.checkmark_small.draw::after, .checkmark_default.draw::after {
   animation-name: checkmark_small_animation; }
 
-.checkmark_small::after {
-  height: 1.2em;
-  width: 0.48em;
-  left: 0;
-  top: 12px; }
-
-.checkmark_default.draw::after {
-  animation-name: checkmark_small_animation; }
-
-.checkmark_default::after {
-  height: 1.2em;
-  width: 0.48em;
-  left: 0;
-  top: 12px; }
+.checkmark_small::after, .checkmark_default::after {
+  height: 1.35714em;
+  width: 0.56548em;
+  left: 3px;
+  top: 13.5px; }
 
 .checkmark_large.draw::after {
   animation-name: checkmark_large_animation; }
 
 .checkmark_large::after {
-  height: 1.7em;
-  width: 0.88em;
+  height: 1.85714em;
+  width: 0.96548em;
   left: 4px;
   top: 17px; }
 
-/* Error */
+/* Error  -------------------------------------- */
 .error_circle {
   position: relative;
   background: #990000; }
