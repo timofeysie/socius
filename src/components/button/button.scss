@@ -7,6 +7,7 @@ $large: 32px;
 
 /* Spinner */
 @keyframes spinner {
+
   to {
     transform: rotate(360deg);
     -webkit-transform: rotate(360deg);
@@ -121,6 +122,9 @@ button {
 /* Success checkmark ----------------------------- */
 $brand-success: #5cb85c;
 $check-color: $brand-success;
+// For some reason this was missing when dusting off the code
+// and merged the long running dev branch into master
+$check-thickness: 3px;
 
 $loader-size_large: 3em;
 $check-height_large: $loader-size_large/2.5;
