@@ -5,13 +5,10 @@
  */
 
 
-import '@stencil/core';
-
-
+import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 
 
 export namespace Components {
-
   interface FoliaButton {
     'color': 'primary' | 'accent' | 'light';
     'shape': 'square' | 'round';
@@ -21,58 +18,24 @@ export namespace Components {
     */
     'type': 'button' | 'reset' | 'success' | 'error' | 'submit' | 'loading';
   }
-  interface FoliaButtonAttributes extends StencilHTMLAttributes {
-    'color'?: 'primary' | 'accent' | 'light';
-    'shape'?: 'square' | 'round';
-    'size'?: 'small' | 'default' | 'large';
-    /**
-    * Internal props (context and connect) Inlined decorator.  Using reflectToAttr makes sure our disabled prop stays in sync with an HTML attribute.
-    */
-    'type'?: 'button' | 'reset' | 'success' | 'error' | 'submit' | 'loading';
-  }
-
   interface FoliaItem {
     'description': string;
     'label': string;
   }
-  interface FoliaItemAttributes extends StencilHTMLAttributes {
-    'description'?: string;
-    'label'?: string;
-  }
-
   interface FoliaTab {
     'active': boolean;
     'disabled': boolean;
     'label': string;
   }
-  interface FoliaTabAttributes extends StencilHTMLAttributes {
-    'active'?: boolean;
-    'disabled'?: boolean;
-    'label'?: string;
-  }
-
   interface FoliaTabs {
-    'openTab': (index: number) => void;
-  }
-  interface FoliaTabsAttributes extends StencilHTMLAttributes {
-    'onChange'?: (event: CustomEvent) => void;
+    /**
+    * @param index listen to this event outside of this component and react to it as follows: const tabs = document.querySelector('mtn-tabs'); tabs.addEventListener('change', event => { // the emitted object will be under event.detail console.log(`CHANGED TABS TO INDEX ${event.detail.tabId}`); });
+    */
+    'openTab': (index: number) => Promise<void>;
   }
 }
 
 declare global {
-  interface StencilElementInterfaces {
-    'FoliaButton': Components.FoliaButton;
-    'FoliaItem': Components.FoliaItem;
-    'FoliaTab': Components.FoliaTab;
-    'FoliaTabs': Components.FoliaTabs;
-  }
-
-  interface StencilIntrinsicElements {
-    'folia-button': Components.FoliaButtonAttributes;
-    'folia-item': Components.FoliaItemAttributes;
-    'folia-tab': Components.FoliaTabAttributes;
-    'folia-tabs': Components.FoliaTabsAttributes;
-  }
 
 
   interface HTMLFoliaButtonElement extends Components.FoliaButton, HTMLStencilElement {}
@@ -98,28 +61,52 @@ declare global {
     prototype: HTMLFoliaTabsElement;
     new (): HTMLFoliaTabsElement;
   };
-
   interface HTMLElementTagNameMap {
-    'folia-button': HTMLFoliaButtonElement
-    'folia-item': HTMLFoliaItemElement
-    'folia-tab': HTMLFoliaTabElement
-    'folia-tabs': HTMLFoliaTabsElement
-  }
-
-  interface ElementTagNameMap {
     'folia-button': HTMLFoliaButtonElement;
     'folia-item': HTMLFoliaItemElement;
     'folia-tab': HTMLFoliaTabElement;
     'folia-tabs': HTMLFoliaTabsElement;
   }
-
-
-  export namespace JSX {
-    export interface Element {}
-    export interface IntrinsicElements extends StencilIntrinsicElements {
-      [tagName: string]: any;
-    }
-  }
-  export interface HTMLAttributes extends StencilHTMLAttributes {}
-
 }
+
+declare namespace LocalJSX {
+  interface FoliaButton extends JSXBase.HTMLAttributes<HTMLFoliaButtonElement> {
+    'color'?: 'primary' | 'accent' | 'light';
+    'shape'?: 'square' | 'round';
+    'size'?: 'small' | 'default' | 'large';
+    /**
+    * Internal props (context and connect) Inlined decorator.  Using reflectToAttr makes sure our disabled prop stays in sync with an HTML attribute.
+    */
+    'type'?: 'button' | 'reset' | 'success' | 'error' | 'submit' | 'loading';
+  }
+  interface FoliaItem extends JSXBase.HTMLAttributes<HTMLFoliaItemElement> {
+    'description'?: string;
+    'label'?: string;
+  }
+  interface FoliaTab extends JSXBase.HTMLAttributes<HTMLFoliaTabElement> {
+    'active'?: boolean;
+    'disabled'?: boolean;
+    'label'?: string;
+  }
+  interface FoliaTabs extends JSXBase.HTMLAttributes<HTMLFoliaTabsElement> {
+    'onChange'?: (event: CustomEvent<any>) => void;
+  }
+
+  interface IntrinsicElements {
+    'folia-button': FoliaButton;
+    'folia-item': FoliaItem;
+    'folia-tab': FoliaTab;
+    'folia-tabs': FoliaTabs;
+  }
+}
+
+export { LocalJSX as JSX };
+
+
+declare module "@stencil/core" {
+  export namespace JSX {
+    interface IntrinsicElements extends LocalJSX.IntrinsicElements {}
+  }
+}
+
+

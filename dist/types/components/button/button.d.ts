@@ -1,4 +1,3 @@
-import '../../stencil.core';
 /**
  * Our props color, shape, and size.
  * Instead of defining my types for these props to be of type string,
@@ -73,6 +72,6 @@ export declare class Button {
      * render() functionq
      * Always the last one in the class.
      */
-    render(): JSX.Element;
+    render(): any;
     private getCssClassMap;
 }

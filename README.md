@@ -30,9 +30,9 @@ When running the app locally, often you have to do a hard reload to get changes 
 
 ## Microinteractions
 
-For different types of buttons, we want to show some animations to let the user know something has happened.  These interactions can work with the
+For different types of buttons, we want to show some animations to let the user know something has happened.  These interactions can work with the ... (this sentence was left incpmplete for some reason).
 
-In order to get the buttons to start a microinteraction when the user selects means accessing the DOM button element.  First of all, the text should fade out as the button shrinks down to a circle.  Then a spinner should activate and wait for the.
+In order to get the buttons to start a microinteraction when the user selects means accessing the DOM button element.  First of all, the text should fade out as the button shrinks down to a circle.  Then a spinner should activate and wait for the result of whatever API call or async function to complete.
 
 We can use something like this to target a button within it's component like this:
 ```
@@ -171,6 +171,41 @@ The basic checkbox without needing any inner divs or svg elements is easy enough
 
 Next we need to animate it.  That might not be so simple.  We also need to refactor the button JavaScript at this point, as the initial state solution has a lot of repeated code in there.  We want to get closer to a single function for each state that works for both shape and size.
 
+Not sure where the saga ended when other projects took over from the work that was going into this.  Now, six months later, we are back here.  I think it was the error state X animation that was holding back a first release.  Now, the first thoughts are, upgrade, simplify, actually publish.
+
+As things stand, we have this:
+```
+$ npm list @stencil/core
+folia-ui@0.0.3 /Users/tim/repos/socius
+└── @stencil/core@0.15.2
+```
+
+On the [docs page]() it says you can do this to upgrade:
+```
+npm install @stencil/core@latest --save-exact
+```
+
+Since nothing is working (action wise) anyhow, I just went ahead and did that without worrying about breaking the app.  Site back think about the nature of writing things like this.  I know it's too much information.  The notes about how to do something and the problems that arise and their solutions is worthwhile, don't get be wrong.  But after reading this section in the readme again after six months showed me that the narrative part was not really useful for anyone, or meaningful if it was never going to be read again as part of a larger narrative.
+
+That thought gotten down, the result of the command is this in the package.json file:
+```
+"@stencil/core": "1.4.0",
+```
+
+Who want's to be if the app will now run.  Above we already had encountered some migration issues.  Is it about 40/60 to working/not working?  I am optimistic and think it's going to work.  Maybe 'think' is not the right word there.  Then what is?
+
+Moving on, it runs, and the result is the same as before the upgrade.
+
+Next, even if it was working, the code is now too complex.  At the end of the period of activity on this project six months ago, Ik had complained to someone at the React meetup that trying to mix the code for a button that had either a square or round style, and a square micro-interaction and a circular micro-interaction, was a bad idea.
+
+It would have been easier to create a rounded button with it's interaction, then made a square button with it's own version.  The guy at the meetup had suggested making that, and then a wrapper that would be able to choose which implementation to choose.  That's a good idea.  It incorporates both of mine.
+
+What works is the style changes.  What doesn't work is the state.  The select on the index page has button(default), submit, loading, success, error and reset states.  But changing this does nothing, as does clicking on the buttons which is supposed to trigger the transitions.
+
+Thinking about what to do next, it seems like having a library with both round and square buttons is not really what anybody wants/  It was a nice experiment, but if I'm going to make a component library, it will be specific to the project the buttons will be used in.
+
+With this in mind, I think an Ionic app that adds micro-interactions would be a good idea.  Let someone else take care of the component part of things.
+
 
 ## Using the tabs
 
@@ -182,6 +217,9 @@ tabs.addEventListener('change', event => {
   console.log(`CHANGED TABS TO INDEX ${event.detail.tabId}`);
 });
 ```
+
+This demo was never finished.  The next step would have been to go to the source and make sure the tabs are correctly implemented.  But the code bases have diverged with the micro-interactions work, so that's not going to happen right now.
+
 
 
 ## HTML<name>Element

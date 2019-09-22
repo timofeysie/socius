@@ -1,4 +1,3 @@
-import '../../stencil.core';
 import { EventEmitter } from '../../stencil.core';
 export declare class Tabs {
     el: HTMLElement;
@@ -16,6 +15,6 @@ export declare class Tabs {
      * });
      */
     openTab(index: number): void;
-    render(): JSX.Element;
+    render(): any;
     private getCssClassMap;
 }
