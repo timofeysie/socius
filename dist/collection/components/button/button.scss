@@ -4,8 +4,10 @@
 
 $small: 18px;
 $large: 32px;
+
 /* Spinner */
 @keyframes spinner {
+
   to {
     transform: rotate(360deg);
     -webkit-transform: rotate(360deg);
@@ -119,16 +121,21 @@ button {
 
 /* Success checkmark ----------------------------- */
 $brand-success: #5cb85c;
-
-$loader-size: 3em;
-$check-height: $loader-size/1.5;
-$check-width: $check-height/2.1;
-$check-thickness: 3px;
 $check-color: $brand-success;
+// For some reason this was missing when dusting off the code
+// and merged the long running dev branch into master
+$check-thickness: 3px;
+
+$loader-size_large: 3em;
+$check-height_large: $loader-size_large/2.5;
+$check-width_large: $check-height_large/2.5;
+$check-left_large: ($loader-size_large/6 + $loader-size_large/12);
+$check-thickness_large: 3px;
 
 $loader-size_small: 1.9em;
 $check-height_small: $loader-size_small/1.4;
 $check-width_small: $check-height_small/2.4;
+$check-thickness_small: 3px;
 
 @keyframes checkmark_small_animation {
   0% {
@@ -160,17 +167,17 @@ $check-width_small: $check-height_small/2.4;
   }
   20% {
     height: 0;
-    width: $check-width+.1;
+    width: $check-width_large+.1;
     opacity: 1;
   }
   40% {
-    height: $check-height+.5;
-    width: $check-width+.4;
+    height: $check-height_large+.5;
+    width: $check-width_large+.4;
     opacity: 1;
   }
   100% {
-    height: $check-height+.5;
-    width: $check-width+.4;
+    height: $check-height_large+.5;
+    width: $check-width_large+.4;
     opacity: 1;
   }
 }
@@ -209,8 +216,8 @@ $check-width_small: $check-height_small/2.4;
     animation-name: checkmark_large_animation;
   }
   &::after {
-    height: $check-height_small+.5;
-    width: $check-width_small+.4;
+    height: $check-height_large+.5;
+    width: $check-width_large+.4;
     left: 4px;
     top: 17px;
   }

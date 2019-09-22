@@ -142,15 +142,15 @@ button {
     opacity: 1; }
   20% {
     height: 0;
-    width: 1.05238em;
+    width: 0.58em;
     opacity: 1; }
   40% {
-    height: 2.5em;
-    width: 1.35238em;
+    height: 1.7em;
+    width: 0.88em;
     opacity: 1; }
   100% {
-    height: 2.5em;
-    width: 1.35238em;
+    height: 1.7em;
+    width: 0.88em;
     opacity: 1; } }
 
 .checkmark.draw::after {
@@ -182,8 +182,8 @@ button {
   animation-name: checkmark_large_animation; }
 
 .checkmark_large::after {
-  height: 1.85714em;
-  width: 0.96548em;
+  height: 1.7em;
+  width: 0.88em;
   left: 4px;
   top: 17px; }
 
